@@ -15,7 +15,7 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 features <- c("area", "aspect_ratio", "circularity", 
               "cell_stiffness", "motility")
 # define the metric to be used for clustering
-# "wass1" (1-Wasserstein) or "koln_simr" (Kolmogrov-Smirnov)
+# "wass1" (1-Wasserstein) or "kolm_smir" (Kolmogrov-Smirnov)
 metric_of_interest <- "wass1"
 
 # load the results from consensus clustering -----

@@ -24,7 +24,7 @@ subs <- c("HA Coll", "HA FN", "500Pa Coll", "500Pa FN",
 tissues_of_interest <- c("Prostate", "Pancreas", "Lung", "Breast")
 
 # get the cell lines for the tissue of interest
-cell_lines <-  read.csv("cell_line_label_colors.csv", 
+cell_lines <-  read.csv("../Figures/cell_line_label_colors.csv", 
                         stringsAsFactors = FALSE) %>%
   # keep only relevant columns
   select(cl_id, tissue) %>%

@@ -14,7 +14,7 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 # Global parameters ------
 features <- c("area", "circularity", "aspect_ratio","cell_stiffness", "motility")
 # tissue and respective colors for text color in heatmaps
-cell.line.label.colors = read.csv("cell_line_label_colors.csv", 
+cell.line.label.colors = read.csv("../Figures/cell_line_label_colors.csv", 
                                   stringsAsFactors = FALSE) %>%
   # change cell_id to factor with levels as the current order of cell lines
   # done to ensure the order of cell lines in the plots

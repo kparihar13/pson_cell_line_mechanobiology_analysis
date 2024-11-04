@@ -14,8 +14,7 @@ In II_comparison_bw_cell_lines:
 - box_plots_tissue_specific.R: rerun if PC-3 is removed
 
 In III_clustering:
-- PCA.R: rerun if PC-3 is removed
-- wasserstein1/compute_<>.R: reurn if PC-3 is removed
-- kolmogrov-smirnov/comput_<>.R: rerun if PC-3 is removed
+- rerun all the .R script is PC-3 is removed
+- in plots_<>.R script look at !!! comment
 
 

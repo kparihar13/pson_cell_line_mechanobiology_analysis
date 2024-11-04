@@ -13,7 +13,7 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 features <- c("area", "circularity", "aspect_ratio",
               "cell_stiffness", "motility")
 
-cell.line.tissue <- read.csv("cell_line_label_colors.csv",
+cell.line.tissue <- read.csv("../Figures/cell_line_label_colors.csv",
                              stringsAsFactors = FALSE) 
 
 tissue.color <- cell.line.tissue %>%

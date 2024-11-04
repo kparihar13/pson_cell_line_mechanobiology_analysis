@@ -45,7 +45,7 @@ fold_names <- list(
 )
 
 # text color cell line names
-cell_line_label_colors_main <- read.csv("cell_line_label_colors.csv", 
+cell_line_label_colors_main <- read.csv("../Figures/cell_line_label_colors.csv", 
                                         stringsAsFactors = FALSE)  %>%
   # change cell_id to factor with levels as the current order of cell lines
   # done to ensure the order of cell lines in the plots

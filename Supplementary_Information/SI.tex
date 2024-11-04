@@ -1,0 +1,207 @@
+% (C) Brett Klamer - MIT - http://opensource.org/licenses/MIT
+% Please contact me if you find any errors or make improvements
+% Contact details at brettklamer.com
+
+\documentclass[11pt,letterpaper,english,oneside]{article} % article class is a standard class
+%==============================================================================
+%Load Packages
+%==============================================================================
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry} % easy page margins
+\usepackage[utf8]{inputenc} % editor uses utf-8 encoding
+\usepackage[T1]{fontenc} % T1 font pdf output
+\usepackage{lmodern} % Latin modern roman font
+\usepackage{bm, bbm} % bold and blackboard bold math symbols
+\usepackage{amsmath, amsfonts, amssymb, amsthm} % math packages
+\usepackage[final]{microtype} % better microtypography
+\usepackage{graphicx} % for easier grahics handling
+\usepackage[hidelinks, colorlinks=true, linkcolor = blue, urlcolor = blue]{hyperref} % to create hyperlinks
+\usepackage{float} % tells floats to stay [H]ere!
+\usepackage{enumitem} % nice lists
+\usepackage{fancyhdr} % nice headers
+\usepackage{caption}  % to control figure and table captions
+\usepackage{booktabs} % to create nice tables
+
+%==============================================================================
+% Enter title and authors here
+%==============================================================================
+\author{Kshitiz Parihar, 
+Jonathan Nukpezah, 
+Daniel V Iwamoto, 
+Katrina Cruz, 
+Fitzroy J Byfield, \\
+LiKang Chin, 
+Maria E Murray, 
+Melissa G Mendez, 
+Anne S van Oosten, 
+Anne Herrmann, \\
+Elisabeth E Charrier, 
+Peter A Galie, 
+Megan Donlick, 
+Tongkeun Lee, \\
+Paul A Janmey, 
+Ravi Radhakrishnan
+}
+\title{Tissue-dependent mechanosensing by cells derived from human tumors}
+\date{}
+
+%==============================================================================
+% Put title and author in PDF properties
+%==============================================================================
+\makeatletter % change interpretation of @
+\hypersetup{pdftitle={\@title},pdfauthor={\@author}}
+
+%==============================================================================
+% Header settings
+%==============================================================================
+\pagestyle{fancy} % turns on fancy header styles
+\fancyhf{} % clear all header and footer fields
+\makeatletter
+\makeatother
+\rhead{\thepage} % right header
+\setlength{\headheight}{13.6pt} % fixes minor warning
+\makeatother % change back interpretation of @
+
+%==============================================================================
+% List spacing
+%==============================================================================
+\setlist[itemize]{parsep=0em} % fix itemize spacing
+\setlist[enumerate]{parsep=0em} % fix enumerate spacing
+
+%==============================================================================
+% Float spacing (changes spacing of tables, graphs, etc)
+%==============================================================================
+%\setlength{\textfloatsep}{3pt}
+%\setlength{\intextsep}{3pt}
+
+%==============================================================================
+% My additions
+%==============================================================================
+\usepackage{changepage} % for the adjustwidth environment
+% commented out
+%\captionsetup{width=0.9\textwidth, justification = raggedright}
+
+
+\begin{document}
+
+\renewcommand{\figurename}{Supplementary Figure}
+
+\maketitle
+
+\input{supplementary_table_area.tex}
+
+\input{supplementary_table_cell_stiffness.tex}
+
+\input{supplementary_table_motility.tex}
+
+%\section{Sensitivity to change in substrate conditions}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.8]{../Figures/supplementary_figure1.png}
+    \caption{Spearman correlation matrix using the median values of the phenotypic features for the cell line-substrate pairs. Only statistically significant correlations are shown.
+    Note that in this analysis only those cell line-substrate pairs which have at least 25 data points for each of the physical feature are considered.}
+    \label{fig:fig1}
+\end{figure}
+\clearpage
+\begin{figure}[H]
+    \hspace*{-2cm}
+    \centering
+    \includegraphics[scale=0.13]{../Figures/Supplementary_Figure2/supplementary_figure2.png}
+    \caption{For each cell line, the ratio of the median values for (A) area, (B) shape (aspect ratio), (C) cell stiffness, and (D) motility as a measure of the phenotypic sensitivity to substrate change. 
+    (HA Coll-FN: HA Coll/HA FN, 500Pa Coll-FN: 500Pa FN/500Pa Coll, 30kPa Coll-FN: 30kPa Coll/30kPa FN, 30kPa-HA Coll: 30kPa Coll/HA Coll, 30kPa-HA FN: 30kPa FN/HA FN). 
+    ***p-value < 0.001; **p-value < 0.01; *p-value < 0.05. N > 25 cells for each cell line on a particular substrate. See supplementary tables 1-3 for the exact value of N for the cell lines.}
+    \label{fig:fig2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.13]{../Figures/Supplementary_Figure3/supplementary_figure3.png}
+    \caption{For each cell line, the ratio of the median values for circularity as a measure of the phenotypic sensitivity to substrate change. 
+    (30k-500Pa Coll: 30kPa Coll/500Pa Coll, 30k-500Pa FN: 30kPa FN/500Pa FN, HA-500Pa Coll: HA Coll/500Pa Coll, HA-500Pa  FN: HA FN/500Pa FN, Glass-30kPa Coll: Glass/30kPa Coll, Glass-30kPa FN: Glass/30kPa FN, 
+    HA Coll-FN: HA Coll/HA FN, 500Pa Coll-FN: 500Pa FN/500Pa Coll, 30kPa Coll-FN: 30kPa Coll/30kPa FN, 30kPa-HA Coll: 30kPa Coll/HA Coll, 30kPa-HA FN: 30kPa FN/HA FN). 
+    ***p-value < 0.001; **p-value < 0.01; *p-value < 0.05. N > 25 cells for each cell line on a particular substrate. See supplementary tables 1-3 for the exact value of N for the cell lines.}
+    \label{fig:fig3}
+\end{figure}
+
+%\section{Comparison between cell lines}
+
+\begin{figure}[H]
+    \hspace*{-1.5cm}
+    \centering
+    \includegraphics[scale=0.14]{../Figures/Supplementary_Figure4/supplementary_figure4.png}
+    \caption{KDEs for outlier-like distributions of (A) hTERT-HPNE cellular area across all substrates, and (B) Capan-1 cell stiffness across all substrates.
+    Median values of cell (A) aspect ratio, and (B) circularity across all the 7 different substrates, along with the kernel density estimates (KDE) for summarizing the distribution of feature values for each cell line. Measurements from N > 200 cells for each of the cell lines. See supplementary tables 1-3 for the exact value of N for the cell lines.}
+    \label{fig:fig4}
+\end{figure}
+
+\begin{figure}[H]
+    \hspace*{-1.5cm}
+    \centering
+    \includegraphics[scale=0.12]{../Figures/Supplementary_Figure5/supplementary_figure5.png}
+    \caption{}
+    \label{fig:fig5}
+\end{figure}
+\begin{adjustwidth}{1cm}{1cm}
+  Supplementary Figure 5: Comparing tissue-specific normal and cancer cell behavior in terms of aspect ratio, and cicularity for (A) prostate, (B) panacrease, (C) lung, and (D) breast cell lines 
+  on soft (500 Pa) and stiff (30 kPa) Coll and FN matrices, soft (300 Pa) HA matrices coated with Coll and FN, and glass. 
+  ***p-value < 0.001; **p-value < 0.01; *p-value < 0.05. N > 25 cells for each cell line on a particular substrate. 
+  See supplementary tables 1-3 for the exact value of N for the cell lines.
+\end{adjustwidth}
+
+% another option to get caption on next page
+% https://tex.stackexchange.com/questions/53315/how-to-put-large-figure-caption-on-separate-page-from-the-figure
+% Didn't use this one because if the caption was by itself on the whole page then it floated to the center of the page
+
+%\section{Clustering Analysis}
+\begin{figure}[H]
+    \hspace*{-2cm}
+    \centering
+    \includegraphics[scale=0.7]{../Figures/Supplementary_Figure6/supplementary_figure6.png}
+    \caption{}
+    \label{fig:fig6}
+\end{figure}
+\begin{adjustwidth}{1cm}{1cm}
+  Supplementary Figure 6: Principal component analysis (PCA) performed using the median values of cell area, aspect ratio, circularity, stiffness, and motility from all the cell line-substrate pairs.
+  Note that in this analysis only those cell line-substrate pairs which have at least 25 data points for each of the physical feature are considered.
+  (A) Vaiance explained by each of the PCs, and the loadings of the physical features on the first four PCs.
+  Pairwise scatter plots for the first four PCs, with the points colored by (B) the substrate type and (C) tissue type. 
+\end{adjustwidth}
+
+\begin{figure}[H]
+    \hspace*{-1.25cm}
+    \centering
+    \includegraphics[scale=0.341]{../Figures/Supplementary_Figure7/supplementary_figure7.png} 
+    \caption{}
+    \label{fig:fig7}
+\end{figure}
+\begin{adjustwidth}{1cm}{1cm}
+    Supplementary Figure 7: Clustering statistics (PAC and CHI) used for identifying the optimal number of clusters (mechanotypes) based on Wasserstein-1 distance and the corresponding clustered consensus matrix for optimal clustering
+    of cell (A) area, (B) aspect ratio, (C) stiffness, and (D) motility. 
+\end{adjustwidth}
+
+\begin{figure}[H]
+    \hspace*{-1cm}
+    \centering
+    \includegraphics[scale=0.282]{../Figures/Supplementary_Figure8/supplementary_figure8.png} 
+    \caption{}
+    \label{fig:fig8}
+\end{figure}
+\begin{adjustwidth}{1cm}{1cm}
+Supplementary Figure 8: (A) Clustering statistics (PAC and CHI) used for identifying the optimal number of clusters (mechanotypes) based on Wasserstein-1 distance and the corresponding clustered consensus matrix for optimal clustering
+of circularity. (B) Mechanotypes for circularity, whereby the heatmap shows the phenotypic class for each cell line-substrate pair and the KDEs correspond to characteristic density function for each class. 
+Note that in this analysis only those cell line-substrate pairs which have at least 25 data points for the physical feature of interest are considered.
+\end{adjustwidth}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.95]{../Figures/Supplementary_Figure9/supplementary_figure9.png} 
+    \caption{}
+    \label{fig:fig9}
+\end{figure}
+\clearpage
+\begin{adjustwidth}{1cm}{1cm}
+  Supplementary Figure 9: Clustering statistics (PAC and CHI) used for identifying the optimal number of clusters based on Kolomogrov-Smirnov distance and 
+  the heatmap showing the corresponding classes for each of the cell line-substrate pairs for cell (A) area, and (B) stiffness.
+\end{adjustwidth}
+
+\end{document}

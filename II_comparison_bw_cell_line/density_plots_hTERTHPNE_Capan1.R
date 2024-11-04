@@ -53,8 +53,8 @@ plt_htert <- df %>%
     # draw x and y axis lines
     axis.line = element_line(color = 'black'),
     # set axis labels and text size
-    axis.title = element_text(size = 12),
-    axis.text = element_text(size = 12))
+    axis.title = element_text(size = 10),
+    axis.text = element_text(size = 10))
 
 # add text "hTERT-HPNE across all substrates" to the plot right upper corner
 plt_htert <- plt_htert + 
@@ -64,11 +64,11 @@ plt_htert <- plt_htert +
            hjust = 1, 
            vjust = 1, 
            label = "hTERT-HPNE    \nacross all substrates", 
-           size = 5, 
+           size = 3, 
            colour = "black")
 
 ggsave("../Figures/Supplementary_Figure3/hTERTHPNE_area_KDE.png", 
-      plt_htert, dpi = 300, width = 2000, height = 1200, units = "px")
+      plt_htert, dpi = 300, width = 1500, height = 900, units = "px")
 
 # Plot KDE for Capan-1 cell stiffness ------------
 df <- data[["cell_stiffness"]] %>% 
@@ -91,8 +91,8 @@ plt_capan1 <- df %>% ggplot(aes(feature_value)) +
     # draw x and y axis lines
     axis.line = element_line(color = 'black'),
     # set axis labels and text size
-    axis.title = element_text(size = 12),
-    axis.text = element_text(size = 12))
+    axis.title = element_text(size = 10),
+    axis.text = element_text(size = 10))
 
 # add text "Capan-1 across all substrates" to the plot right upper corner
 plt_capan1 <- plt_capan1 + 
@@ -102,8 +102,8 @@ plt_capan1 <- plt_capan1 +
            hjust = 1, 
            vjust = 1, 
            label = "Capan-1         \nacross all substrates", 
-           size = 5, 
+           size = 3, 
            colour = "black")
 
 ggsave("../Figures/Supplementary_Figure3/Capan1_cell_stiffness_KDE.png", 
-      plt_capan1, dpi = 300, width = 2000, height = 1200, units = "px")
+      plt_capan1, dpi = 300, width = 1500, height = 900, units = "px")

@@ -92,7 +92,7 @@ y.labels <- list("area" = expression("Area (" * mu*"m)"^2),
                  "circularity" = "Circularity",
                  "aspect_ratio" = "Aspect Ratio", 
                  "cell_stiffness" = "Cell Stiffness (Pa)",
-                 "motility" = expression("Motility (" * mu*"m/hr)"))
+                 "motility" = expression("Speed (" * mu*"m/hr)"))
 
 # for pvalue bars above the boxplots
 # dependent on tissue of interest due to differing ranges of y-axis 
@@ -325,7 +325,7 @@ for (t in tissues_of_interest) {
       
       # save the plot
       if (f %in% c("circularity", "aspect_ratio")){
-        png(paste0("../Figures/Supplementary_Figure4/",t, "_", f, ".png"), 
+        png(paste0("../Figures/Supplementary_Figure5/",t, "_", f, ".png"), 
             res = 300, width = 2300, height = 1500)
       } else {
         png(paste0("../Figures/Figure4/",t, "_", f, ".png"), 

@@ -37,7 +37,7 @@ cluster_colors <- list(c("#0000ff","#ff0000"),
 
 # metric of interest
 # "wass1" (1-Wasserstein) or "kolm_smir" (Kolmogrov-Smirnov)
-metric_of_interest <- "kolm_smir"
+metric_of_interest <- "wass1"
 
 # load the data --------
 # define an empty named list for storing data
@@ -68,7 +68,6 @@ for (f in features) {
     mutate(cl_sub = paste(cl_id,"_",sub_id,sep='')) %>%
     filter(!(cl_sub %in% data_overview[[f]]$cl_sub)) 
 }
-
 
 
 # load consensus cluster .RData object and merge labels with data --------
@@ -220,7 +219,8 @@ for (f in features){
     column_to_rownames('cl_id')
   
   # get the colors for the clusters
-  colors <- structure(median.clusters[[f]]$colors, names = as.character(median.clusters[[f]]$label))
+  colors <- structure(median.clusters[[f]]$colors, 
+                      names = as.character(median.clusters[[f]]$label))
   
   # Get the indices (i,j) for boundary.cases in cluster.map.pivot
   # column for storing row index
@@ -296,12 +296,12 @@ for (f in features){
       png(paste0("../Figures/Figure5/", f,"_cluster_heatmap.png"), 
           res = 300, width = 1500, height = 2500, units = "px")
     } else {
-      png(paste0("../Figures/Supplementary_Figure7/", f,"_cluster_heatmap.png"), 
+      png(paste0("../Figures/Supplementary_Figure8/", f,"_cluster_heatmap.png"), 
           res = 300, width = 1500, height = 2500, units = "px")
     }
   } else {
     if (f %in% c("area", "cell_stiffness")){
-      png(paste0("../Figures/Supplementary_Figure8/", f,"_cluster_heatmap.png"), 
+      png(paste0("../Figures/Supplementary_Figure9/", f,"_cluster_heatmap.png"), 
           res = 300, width = 1500, height = 2500, units = "px")
     } else {
       png(paste0(f, "/", metric_of_interest,"_consensus_clustering/cluster_heatmap.png"), 
@@ -406,7 +406,7 @@ for (f in features){
       png(paste0("../Figures/Figure5/", f,"_cluster_KDEs.png"), 
           res = 300, width = 1800, height = 1200, units = "px")
     } else {
-      png(paste0("../Figures/Supplementary_Figure7/", f,"_cluster_KDEs.png"), 
+      png(paste0("../Figures/Supplementary_Figure8/", f,"_cluster_KDEs.png"), 
           res = 300, width = 1800, height = 1200, units = "px")
     }
   } else {

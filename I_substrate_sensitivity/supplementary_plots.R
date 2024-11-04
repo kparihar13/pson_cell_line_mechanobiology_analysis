@@ -17,7 +17,7 @@ features <- c("area", "circularity", "aspect_ratio", "cell_stiffness", "motility
 feature_names <- list(
   "area" = "Area", "circularity" = "Circularity",
   "aspect_ratio" = "Aspect Ratio",
-  "cell_stiffness" = "Cell Stiffness", "motility" = "Motility"
+  "cell_stiffness" = "Cell Stiffness", "motility" = "Speed"
 )
 
 folds <- list(
@@ -233,11 +233,11 @@ for (f in features) {
 
   # file to save the plot
   if (f != "circularity") {
-    png(paste("../Figures/Supplementary_Figure1/", f, ".png", sep = ""),
+    png(paste("../Figures/Supplementary_Figure2/", f, ".png", sep = ""),
       res = 300, width = 2500, height = 2000
     )
   } else {
-    png(paste("../Figures/Supplementary_Figure2/", f, "_B.png", sep = ""),
+    png(paste("../Figures/Supplementary_Figure3/", f, "_B.png", sep = ""),
       res = 300, width = 2500, height = 2000
     )
   }

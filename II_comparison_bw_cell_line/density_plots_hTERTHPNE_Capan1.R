@@ -67,7 +67,7 @@ plt_htert <- plt_htert +
            size = 3, 
            colour = "black")
 
-ggsave("../Figures/Supplementary_Figure3/hTERTHPNE_area_KDE.png", 
+ggsave("../Figures/Supplementary_Figure4/hTERTHPNE_area_KDE.png", 
       plt_htert, dpi = 300, width = 1500, height = 900, units = "px")
 
 # Plot KDE for Capan-1 cell stiffness ------------
@@ -105,5 +105,5 @@ plt_capan1 <- plt_capan1 +
            size = 3, 
            colour = "black")
 
-ggsave("../Figures/Supplementary_Figure3/Capan1_cell_stiffness_KDE.png", 
+ggsave("../Figures/Supplementary_Figure4/Capan1_cell_stiffness_KDE.png", 
       plt_capan1, dpi = 300, width = 1500, height = 900, units = "px")

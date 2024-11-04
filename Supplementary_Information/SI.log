@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.25)  2 NOV 2024 12:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.25)  4 NOV 2024 16:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -621,75 +621,75 @@ Overfull \vbox (83.79434pt too high) has occurred while \output is active []
 <../Figures/Supplementary_Figure6/supplementary_figure6.png, id=58, 828.9369pt x 963.6pt>
 File: ../Figures/Supplementary_Figure6/supplementary_figure6.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure6/supplementary_figure6.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure6/supplementary_figure6.png  used on input line 159.
+Package pdftex.def Info: ../Figures/Supplementary_Figure6/supplementary_figure6.png  used on input line 160.
 (pdftex.def)             Requested size: 580.25188pt x 674.51541pt.
 
-Overfull \hbox (56.02469pt too wide) in paragraph at lines 157--160
+Overfull \hbox (56.02469pt too wide) in paragraph at lines 157--161
  []|  [] 
  []
 
 [10]
-Overfull \vbox (47.6854pt too high) has occurred while \output is active []
+Overfull \vbox (104.5909pt too high) has occurred while \output is active []
 
  [11 <../Figures/Supplementary_Figure6/supplementary_figure6.png>]
 <../Figures/Supplementary_Figure7/supplementary_figure7.png, id=68, 1570.86874pt x 2083.785pt>
 File: ../Figures/Supplementary_Figure7/supplementary_figure7.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure7/supplementary_figure7.png>
 Package pdftex.def Info: ../Figures/Supplementary_Figure7/supplementary_figure7.png  used on input line 173.
-(pdftex.def)             Requested size: 535.6703pt x 710.57608pt.
+(pdftex.def)             Requested size: 471.26427pt x 625.14034pt.
 
-Overfull \hbox (32.78268pt too wide) in paragraph at lines 171--174
- []|  [] 
+Overfull \hbox (1.50925pt too wide) in paragraph at lines 173--175
+ [][] 
  []
 
 [12]
-Overfull \vbox (83.74606pt too high) has occurred while \output is active []
+Overfull \vbox (39.11034pt too high) has occurred while \output is active []
 
  [13 <../Figures/Supplementary_Figure7/supplementary_figure7.png>]
 <../Figures/Supplementary_Figure8/supplementary_figure8.png, id=79, 1527.7075pt x 2537.48pt>
 File: ../Figures/Supplementary_Figure8/supplementary_figure8.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure8/supplementary_figure8.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure8/supplementary_figure8.png  used on input line 185.
+Package pdftex.def Info: ../Figures/Supplementary_Figure8/supplementary_figure8.png  used on input line 182.
 (pdftex.def)             Requested size: 430.80891pt x 715.56172pt.
- [14]
+
 Overfull \vbox (88.7317pt too high) has occurred while \output is active []
 
- [15 <../Figures/Supplementary_Figure8/supplementary_figure8.png>]
-<../Figures/Supplementary_Figure9/supplementary_figure9.png, id=89, 357.0138pt x 746.79pt>
+ [14 <../Figures/Supplementary_Figure8/supplementary_figure8.png>]
+<../Figures/Supplementary_Figure9/supplementary_figure9.png, id=85, 357.0138pt x 746.79pt>
 File: ../Figures/Supplementary_Figure9/supplementary_figure9.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure9/supplementary_figure9.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure9/supplementary_figure9.png  used on input line 197.
+Package pdftex.def Info: ../Figures/Supplementary_Figure9/supplementary_figure9.png  used on input line 194.
 (pdftex.def)             Requested size: 339.16116pt x 709.44647pt.
 
 
-LaTeX Warning: Float too large for page by 82.61646pt on input line 200.
+LaTeX Warning: Float too large for page by 82.61646pt on input line 197.
 
-[16] [17 <../Figures/Supplementary_Figure9/supplementary_figure9.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 207.
- [18
+[15] [16 <../Figures/Supplementary_Figure9/supplementary_figure9.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 204.
+ [17
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 207.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 204.
  (./SI.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 207.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 207.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 204.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 204.
 Package rerunfilecheck Info: File `SI.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 207.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 204.
  ) 
 Here is how much of TeX's memory you used:
- 10655 strings out of 481239
- 168255 string characters out of 5920377
- 501881 words of memory out of 5000000
+ 10656 strings out of 481239
+ 168268 string characters out of 5920377
+ 502174 words of memory out of 5000000
  25602 multiletter control sequences out of 15000+600000
- 575107 words of font info for 86 fonts, out of 8000000 for 9000
+ 575190 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,11n,45p,914b,398s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb>
-Output written on SI.pdf (18 pages, 5426869 bytes).
+Output written on SI.pdf (17 pages, 5431485 bytes).
 PDF statistics:
- 124 PDF objects out of 1000 (max. 8388607)
- 91 compressed objects within 1 object stream
- 31 named destinations out of 1000 (max. 500000)
+ 119 PDF objects out of 1000 (max. 8388607)
+ 87 compressed objects within 1 object stream
+ 30 named destinations out of 1000 (max. 500000)
  11822 words of extra memory for PDF output out of 12000 (max. 10000000)
 

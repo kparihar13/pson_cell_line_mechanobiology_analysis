@@ -70,7 +70,7 @@ xlab <- list("area" = expression("Area (" * mu*"m)"^2),
              "circularity" = "Circularity",
              "aspect_ratio" = "Aspect Ratio", 
              "cell_stiffness" = "Cell Stiffness (kPa)",
-             "motility" = expression("Motility (" * mu*"m/hr)"))
+             "motility" = expression("Speed (" * mu*"m/hr)"))
 # tick marks for the legends
 at <- list("area" = c(0,1000,2000,3000), 
            "circularity" = c(0.2,0.4,0.6,0.8,1),
@@ -205,11 +205,11 @@ for (f in features) {
   # png(paste("legends/",f,".png",sep=""),res = 300, width = 2000, height = 3000)
   
   # save the heatmap
-  if (f != "circularity") {
+  if (f %in% c("area", "cell_stiffness", "motility")) {
     png(paste("../Figures/Figure3/",f,".png",sep=""),
         res = 300, width = 2000, height = 3500)
   } else {
-    png(paste("../Figures/Supplementary_Figure3/",f,".png",sep=""),
+    png(paste("../Figures/Supplementary_Figure4/",f,".png",sep=""),
         res = 300, width = 2000, height = 3500)
   }
   
@@ -245,11 +245,11 @@ for (f in features) {
   # plot the legends for the heatmap
   col_fun = colorRamp2(seq(min(temp.matrix), max(temp.matrix), length.out=12), 
                        hcl.colors(12, "Blue-Red"))
-  if (f != "circularity") {
+  if (f %in% c("area", "cell_stiffness", "motility")) {
     png(paste("../Figures/Figure3/",f,"_legend.png",sep=""),
         res = 300, width = 1000, height = 300)
   } else {
-    png(paste("../Figures/Supplementary_Figure3/",f,"_legend.png",sep=""),
+    png(paste("../Figures/Supplementary_Figure4/",f,"_legend.png",sep=""),
         res = 300, width = 1000, height = 300)
   }
   

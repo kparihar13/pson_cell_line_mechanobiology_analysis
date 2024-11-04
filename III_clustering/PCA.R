@@ -87,7 +87,7 @@ for (f in features) {
 }
 
 colnames(medians.merged)[3:7] <- c("Area","Circularity","Aspect Ratio",
-                                   "Cell Stiffness","Motility")
+                                   "Cell Stiffness","Speed")
 
 # Principal component analysis (PCA) -------------
 # prepare the data
@@ -163,10 +163,13 @@ plt.loadings <- as.data.frame(pca.res$rotation) %>%
         panel.grid.minor.x = element_blank()) 
 
 # combine variance and loadings plots
-ggsave("../Figures/Supplementary_Figure5/pca_variance_loadings.png", 
-       plot_grid(plt.variance, plt.loadings, nrow = 1, ncol = 2,
-       labels = "AUTO", rel_widths = c(1, 2)), 
-       dpi = 300, units = "px", width = 4000, height = 2000)
+ggsave("../Figures/Supplementary_Figure6/pca_variance_loadings.png", 
+       plot_grid(plt.variance, plt.loadings, 
+                 nrow = 1, ncol = 2,
+                 labels = "AUTO", 
+                 rel_widths = c(1, 2)), 
+       dpi = 300, units = "px", 
+       width = 4000, height = 2000)
 
 # 2D PCA plots: one PC vs another PC 
 # prepare the data for plotting
@@ -239,13 +242,13 @@ plotpca <- function(df, var.explained, manual.color, category) {
 
 tissue.pca.plots <- plotpca(pca.res.df, pc.per, tissue.color, "tissue")     
 
-ggsave("../Figures/Supplementary_Figure5/pca_tissue.png", 
+ggsave("../Figures/Supplementary_Figure6/pca_tissue.png", 
        tissue.pca.plots, 
        dpi = 300, units = "px", width = 2500, height = 3500)
 
 subs.pca.plots <- plotpca(pca.res.df, pc.per, substrate.color, "sub_id")     
 
-ggsave("../Figures/Supplementary_Figure5/pca_substrate.png", 
+ggsave("../Figures/Supplementary_Figure6/pca_substrate.png", 
        subs.pca.plots, 
        dpi = 300, units = "px", width = 2500, height = 3500)
 

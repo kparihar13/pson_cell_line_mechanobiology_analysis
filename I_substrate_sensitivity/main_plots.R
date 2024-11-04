@@ -17,7 +17,7 @@ features <- c("area", "circularity", "aspect_ratio", "cell_stiffness", "motility
 feature_names <- list(
   "area" = "Area", "circularity" = "Circularity",
   "aspect_ratio" = "Aspect Ratio",
-  "cell_stiffness" = "Cell Stiffness", "motility" = "Motility"
+  "cell_stiffness" = "Cell Stiffness", "motility" = "Speed"
 )
 
 folds <- list(
@@ -252,7 +252,7 @@ for (f in features) {
       res = 300, width = 3000, height = 2000
     )
   } else {
-    png(paste("../Figures/Supplementary_Figure2/", f, "_A.png", sep = ""),
+    png(paste("../Figures/Supplementary_Figure3/", f, "_A.png", sep = ""),
       res = 300, width = 3000, height = 2000
     )
   }
@@ -346,13 +346,13 @@ for (f in features) {
       if (fold_names[[names(fold_names)[k]]] == "30k-500Pa Coll") {
         # add the feature name on top
         grid.text(feature_names[[f]],
-          x = unit(3.75, "npc"),
+          x = unit(3.86, "npc"),
           y = unit(1.08, "npc"), 
           gp = gpar(fontsize = 12)
         )
         # x-axis label
         grid.text(expression("log"[2] * "(ratio of medians)"),
-          x = unit(3.75, "npc"),
+          x = unit(3.86, "npc"),
           y = unit(-0.07, "npc"), 
           gp = gpar(fontsize = 12)
         )

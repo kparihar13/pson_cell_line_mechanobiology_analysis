@@ -19,22 +19,29 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 features <- c("area", "circularity", "aspect_ratio",
               "cell_stiffness", "motility")
 cell_line <- 'T98G'
-subs <- data.frame('sub_id' = c('30kPa Coll', '30kPa FN', '500Pa Coll', '500Pa FN',
+subs <- data.frame('sub_id' = c('30kPa Coll', '30kPa FN', 
+                                '500Pa Coll', '500Pa FN',
                                 'HA Coll', 'HA FN', 'Glass'),
                    'subs_kPa' = c(30, 30, 0.5, 0.5,0.3, 0.3, 500),
-                   'subs_type_I' = as.factor(c('Collagen', 'Fibronectin', 'Collagen', 'Fibronectin',
-                                             'Hyaluronic acid', 'Hyaluronic acid', 'Glass')),
-                   'subs_type_II' = as.factor(c('Collagen', 'Fibronectin', 'Collagen', 'Fibronectin',
-                                                'Collagen', 'Fibronectin', 'Glass'))) 
+                   'subs_type_I' = as.factor(c('Collagen', 'Fibronectin', 
+                                               'Collagen', 'Fibronectin',
+                                               'Hyaluronic acid', 'Hyaluronic acid', 
+                                               'Glass')),
+                   'subs_type_II' = as.factor(c('Collagen', 'Fibronectin', 
+                                                'Collagen', 'Fibronectin',
+                                                'Collagen', 'Fibronectin', 
+                                                'Glass'))) 
 
 # load the data --------
 # define an empty named list for storing data
 data <- setNames(vector("list", length(features)), features)  
 for (f in features){
   data[[f]] <- read_tsv(paste0('../../data/',f,'.tsv'), 
-                        show_col_types = FALSE) %>% as_tibble()
+                        show_col_types = FALSE) %>% 
+    as_tibble()
   colnames(data[[f]]) <- c("cl_id", "sub_id", "feature_value")
-  data[[f]] <- data[[f]] %>% mutate_at(c('cl_id', 'sub_id'), as.factor)
+  data[[f]] <- data[[f]] %>% 
+    mutate_at(c('cl_id', 'sub_id'), as.factor)
 }
 
 # remove cases with less than minimum number of data points -------
@@ -149,27 +156,14 @@ plot_feature <- function(data, f, margins, offset) {
 # plotting median
 yLab <- "Median"
 
-if (cell_line == "T98G") {
-  png(paste0(cell_line,".png"),
-      res = 300, width = 2500, height = 2500)
-  par(mfrow=c(2,2), mgp=c(2.2,0.5,0))
-  plot_feature(data, "area", c(2,4,4,2), 45)
-  plot_feature(data,"aspect_ratio", c(2,4,4,2), 0.1)
-  plot_feature(data,"cell_stiffness", c(4,4,2,2), 135)
-  plot_feature(data,"motility", c(4,4,2,2), 2)
-  dev.off()
-}
-
-if (cell_line == "SW620") {
-  png(paste0(cell_line, ".png"),
-      res = 300, width = 2500, height = 2500)
-  par(mfrow=c(2,2), mgp=c(2.2,0.5,0))
-  plot_feature(data, "area", c(2,4,4,2), 2.3)
-  plot_feature(data,"aspect_ratio", c(2,4,4,2), 0.0035)
-  plot_feature(data,"cell_stiffness", c(4,4,2,2), 115)
-  plot_feature(data,"motility", c(4,4,2,2), 3)
-  dev.off()
-}
+png(paste0(cell_line,".png"),
+    res = 300, width = 2500, height = 2500)
+par(mfrow=c(2,2), mgp=c(2.2,0.5,0))
+plot_feature(data, "area", c(2,4,4,2), 45)
+plot_feature(data,"aspect_ratio", c(2,4,4,2), 0.1)
+plot_feature(data,"cell_stiffness", c(4,4,2,2), 135)
+plot_feature(data,"motility", c(4,4,2,2), 2)
+dev.off()
 
 # Get the legend -----------
 # remove factor for subs_type_II

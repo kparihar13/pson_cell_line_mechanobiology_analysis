@@ -23,7 +23,7 @@ min_cutoff <- 25
 # define an empty named list for storing data
 data <- setNames(vector("list", length(features)), features)  
 for (f in features){
-  data[[f]] <- read_tsv(paste('../../data/',f,'.tsv',sep = ''), 
+  data[[f]] <- read_tsv(paste('../data/',f,'.tsv',sep = ''), 
                         show_col_types = FALSE) %>% 
     as_tibble()
   colnames(data[[f]]) <- c("cl_id", "sub_id", "feature_value")

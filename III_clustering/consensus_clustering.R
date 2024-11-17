@@ -127,17 +127,17 @@ for (f in features) {
   # save the plots
   if (metric_of_interest == "wass1")
     if (f != "circularity") {
-      ggsave(paste0("../Figures/Supplementary_Figure6/", f, "_pac_chi.png"), 
+      ggsave(paste0("../Figures/Supplementary_Figure7/", f, "_pac_chi.png"), 
              plot = plot_grid(plotlist = plts, ncol = 2, nrow = 1), 
              dpi = 300, width = 1000, height = 500, units = "px")
     } else {
-      ggsave(paste0("../Figures/Supplementary_Figure7/", f, "_pac_chi.png"), 
+      ggsave(paste0("../Figures/Supplementary_Figure8/", f, "_pac_chi.png"), 
              plot = plot_grid(plotlist = plts, ncol = 2, nrow = 1), 
              dpi = 300, width = 1000, height = 500, units = "px")
     }
   else
     if (f %in% c("area", "cell_stiffness")) {
-      ggsave(paste0("../Figures/Supplementary_Figure8/", f, "_pac_chi.png"), 
+      ggsave(paste0("../Figures/Supplementary_Figure9/", f, "_pac_chi.png"), 
              plot = plot_grid(plotlist = plts, ncol = 2, nrow = 1), 
              dpi = 300, width = 1000, height = 500, units = "px")
     } else {

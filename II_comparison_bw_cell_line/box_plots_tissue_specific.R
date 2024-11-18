@@ -129,7 +129,6 @@ for (t in tissues_of_interest) {
 
   # create annotation dataframe for adding p-values to the boxplots
   # adapted from https://const-ae.github.io/ggsignif/
-  #pvalue.df <- setNames(vector("list", length(features)), features)
   
   for (f in features) {
     

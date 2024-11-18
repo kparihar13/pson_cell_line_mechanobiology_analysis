@@ -133,13 +133,6 @@ for (f in features) {
     mutate(cl_id = factor(cl_id, levels = cell_line_label_colors_main$cl_id)) %>%
     arrange(cl_id) %>%
     column_to_rownames("cl_id")
-  
-  # !!!
-  # delete row named PC-3 from fold_value and fold_pvalue
-  # all fold change values are NA for this due to lack of data (< min.cutoff of 25 cells)
-  # in at least one of the substrates being compared in each fold
-  # fold_value <- fold_value[-which(rownames(fold_value) == "PC-3"), ]
-  # fold_pvalue <- fold_pvalue[-which(rownames(fold_pvalue) == "PC-3"), ]
 
   # log2 transform the ratio values
   fold_value <- log2(fold_value)
@@ -273,7 +266,7 @@ for (f in features) {
       if (sum(is.na(pvalue_temp)) > 0) {
         pvalue_temp[which(is.na(pvalue_temp))] <- 1000
       }
-      eps <- 1 #!!!ifelse(f == "motility" && k == 1, 0.95, 1)
+      eps <- 1 
       for (i in 1:length(pvalue_temp)) {
         y_pvalue <- unit((length(pvalue_temp) - i + 0.4) * 130 / length(pvalue_temp), "mm")
         if (pvalue_temp[[i]] <= 0.001) {

@@ -220,21 +220,8 @@ for (f in features) {
     grid.text(xlab[[f]], 
               x = unit(0.5,"npc"),
               y = unit(-1.79*nrow(temp.matrix),"line"),
-              # !!!
-              # y = ifelse(f == "motility", 
-              #            unit(-1.85*nrow(temp.matrix),"line"),
-              #            unit(-1.79*nrow(temp.matrix),"line")),
               gp = gpar(fontsize = 12))
 
-    # !!!
-    # if (f != "motility") {grid.text("Median\nvalue", 
-    #                                 x = unit(-0.27,"npc"), 
-    #                                 y = unit(-1.76*nrow(temp.matrix),"line"),
-    #                                 gp = gpar(fontsize = 12))}
-    # else {grid.text("Median\nvalue", x
-    #                 = unit(-0.27,"npc"), 
-    #                 y = unit(-1.82*nrow(temp.matrix),"line"),
-    #                 gp = gpar(fontsize = 12))}
     grid.text("Median\nvalue", 
               x = unit(-0.27,"npc"),
               y = unit(-1.76*nrow(temp.matrix),"line"),

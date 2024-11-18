@@ -253,12 +253,6 @@ for (f in features){
                row_names_gp = gpar(fontsize = 10, 
                                    col = cell.line.label.colors.feature$tissue_col),
                column_names_gp = gpar(fontsize = 10),
-               # !!!
-               # uncomment if PC-3 is removed from the motility data
-               # row_split = ifelse((f != "motility"), 
-               #                    rep(1:8, c(4,5,3,3,3,4,6,2)),
-               #                    rep(1:8, c(4,4,3,3,3,4,6,2))), 
-               # splitting rows in terms of tissue types for aesthetics
                row_split = rep(1:8, c(4,5,3,3,3,4,6,2)),
                row_title = NULL, 
                row_gap = unit(1.2, "mm"),

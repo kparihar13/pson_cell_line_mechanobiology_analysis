@@ -8,19 +8,14 @@ suppressPackageStartupMessages({
   registerDoParallel(cores = 8)
 })
 
-# load the data --------
-features <- c("area", "circularity", "aspect_ratio", "cell_stiffness", "motility")
+# set the working directory to the location of the script ------
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
-# define an empty named list for storing data
-data <- setNames(vector("list", length(features)), features)
-for (f in features) {
-  data[[f]] <- read_tsv(paste("../data/", f, ".tsv", sep = ""), 
-                        show_col_types = FALSE) %>%
-    as_tibble()
-  colnames(data[[f]]) <- c("cl_id", "sub_id", "feature_value")
-}
+# global parameters ---------
+features <- c("area", "circularity", "aspect_ratio", 
+              "cell_stiffness", "motility")
 
-# define fold change (to, from) ----------
+# define fold change (to, from)
 folds <- list(
   "30k-500Pa Coll" = c("30kPa Coll", "500Pa Coll"),
   "30kPa-500Pa FN" = c("30kPa FN", "500Pa FN"),
@@ -34,6 +29,16 @@ folds <- list(
   "Glass-30kPa Coll" = c("Glass", "30kPa Coll"),
   "Glass-30kPa FN" = c("Glass", "30kPa FN")
 )
+
+# load the data --------
+# define an empty named list for storing data
+data <- setNames(vector("list", length(features)), features)
+for (f in features) {
+  data[[f]] <- read_tsv(paste("../data/", f, ".tsv", sep = ""), 
+                        show_col_types = FALSE) %>%
+    as_tibble()
+  colnames(data[[f]]) <- c("cl_id", "sub_id", "feature_value")
+}
 
 # define required custom functions -----------
 ratio <- function(x) {
@@ -89,8 +94,8 @@ for (f in features) {
         (nrow(filter(temp, sub_id == fc[2])) >= min.cutoff)) {
         # calculate the observed ratio of medians
         obs_ratio <- obs_ratio %>%
-          ## to make sure the order of substrates are in correct order
-          ## 1st row -> to and 2nd row -> from
+          # to make sure the order of substrates are in correct order
+          # 1st row -> to and 2nd row -> from
           arrange(factor(sub_id, levels = fc)) %>%
           summarise(ratio(median_value)) %>%
           pull()
@@ -98,7 +103,7 @@ for (f in features) {
         # Null hypothesis: same median, i.e. log2(ratio) = 0
         medianratio <- foreach(i = 1:reps, .combine = c) %dopar% {
           oneratio <- temp %>%
-            ## permutate the substrate labels, keeping feature values intact
+            # permutate the substrate labels, keeping feature values intact
             mutate(permsubs = sample(sub_id)) %>%
             group_by(permsubs) %>%
             summarise(median_value = median(feature_value)) %>%
@@ -112,7 +117,7 @@ for (f in features) {
         # Note: +1 in numerator and denominator to ensure finite sample type-I error control
         # +1 basically corresponds to including the observed value in the permutation distribution
         pvalue_temp <- c(pvalue_temp, 
-                         (sum(abs(medianratio) >= abs(log2(obs_ratio))) + 1) / (1 + reps))
+                         (1 + sum(abs(medianratio) >= abs(log2(obs_ratio)))) / (1 + reps))
 
         ratio_temp <- c(ratio_temp, obs_ratio)
       } else {

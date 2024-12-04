@@ -51,7 +51,7 @@ cell_line_label_colors_main <- read.csv("../Figures/cell_line_label_colors.csv",
   # done to ensure the order of cell lines in the plots
   mutate(cl_id = factor(cl_id, levels = unique(cl_id)))
 
-# Plot fold change ---------------
+# plot fold change ---------------
 
 # Dataframe, String -> Dataframe
 # specifies the fold change based color for bar chart
@@ -241,11 +241,11 @@ for (f in features) {
   
   # file to save the plot
   if (f != "circularity") {
-    png(paste("../Figures/Figure2/", f, ".png", sep = ""),
+    png(paste("../Figures/Figure2/", f, "_temp.png", sep = ""),
       res = 300, width = 3000, height = 2000
     )
   } else {
-    png(paste("../Figures/Supplementary_Figure3/", f, "_A.png", sep = ""),
+    png(paste("../Figures/Supplementary_Figure3/", f, "_A_temp.png", sep = ""),
       res = 300, width = 3000, height = 2000
     )
   }

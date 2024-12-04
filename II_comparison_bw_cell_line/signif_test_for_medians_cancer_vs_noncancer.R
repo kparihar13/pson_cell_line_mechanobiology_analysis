@@ -4,8 +4,6 @@
 # load packages -------
 suppressPackageStartupMessages({
   library(tidyverse)
-  library(rcompanion)
-  library(boot)
   library(foreach)
   library(doParallel)
 })
@@ -33,6 +31,9 @@ cell_lines <-  read.csv("../Figures/cell_line_label_colors.csv",
 
 # minimum cutoff for number of observations to be included in the analysis
 min_cutoff <- 25
+
+# number of permutations
+reps <- 1000
 
 # load data -----------
 # define an empty named list for storing data
@@ -72,6 +73,41 @@ for (f in features){
 }
 
 # perform permutation test ------------
+
+# function to perform permutation test
+perm_test <- function(data, reps){
+  # get the values for the two groups
+  group1 <- data %>% 
+    filter(status == "Non-cancer") %>% 
+    pull(feature_value)
+  group2 <- data %>% 
+    filter(status == "Cancer") %>% 
+    pull(feature_value)
+  
+  # calculate the observed difference in medians
+  obs_diff <- median(group1) - median(group2)
+  
+  # store the permuted differences
+  perm_diff <- vector("numeric", reps)
+  
+  # perform the permutation test
+  for (i in 1:reps){
+    # shuffle the data
+    shuffled_data <- sample(c(group1, group2), replace = FALSE)
+    # calculate the permuted difference
+    perm_diff[i] <- median(shuffled_data[1:length(group1)]) - 
+      median(shuffled_data[(length(group1)+1):length(shuffled_data)])
+  }
+  
+  # calculate the pvalue
+  # two-sided test, thats why abs() is used
+  # Note: +1 in numerator and denominator to ensure finite sample type-I error control
+  # +1 basically corresponds to including the observed value in the permutation distribution
+  pval <- (1 + sum(abs(perm_diff) >= abs(obs_diff)))/(1 + reps)
+  
+  return(pval)
+}
+
 for (t in tissues_of_interest) {
   
   # cell lines for the tissue of interest
@@ -81,11 +117,9 @@ for (t in tissues_of_interest) {
   
   # stat.test with respect to each of the non-cancer cell lines
   stat.test <- setNames(vector("list", length(features)), features)
-  # to store the adjusted pvalues after BH correction
-  stat.test.bh <- setNames(vector("list", length(features)), features)
   
   for (f in features) {
-
+    
     nc_cells <- data[[f]] %>% 
       # keep only the cell lines of interest
       filter(cl_id %in% cell_lines_tissue) %>%
@@ -104,25 +138,24 @@ for (t in tissues_of_interest) {
     
     # make sure that there are non-cancer cell lines
     if (length(nc_cells) > 0) {
-      stat.test[[f]] <- setNames(vector("list", length(nc_cells)), nc_cells)
-      stat.test.bh[[f]] <- setNames(vector("list", length(nc_cells)), nc_cells)
+      
+      # define an empty dataframe for storing the pvalues
+      stat.test[[f]] <- data.frame()
       
       for (nc in nc_cells) {
-        stat.test[[f]][[nc]] <- matrix(NA, length(c_cells), length(subs))
-        stat.test[[f]][[nc]] <- as.data.frame(stat.test[[f]][[nc]])
-        colnames(stat.test[[f]][[nc]]) <- subs
-        rownames(stat.test[[f]][[nc]]) <- c_cells
+        temp.test <- matrix(NA, length(c_cells), length(subs))
+        temp.test <- as.data.frame(temp.test)
+        colnames(temp.test) <- subs
+        rownames(temp.test) <- c_cells
         
         # perform permutation tests
         for (cancer in c_cells) {
-          # temp.data.pre <- 
-          
           # Note that output is returned in order because .inorder = TRUE (default in foreach)
-          # can just simply substitute values in stat.test[[f]]
+          # can just simply substitute values in temp.test
           pval <- foreach(s=subs, .combine=c) %dopar% {
             temp.data <- data[[f]] %>% 
               # filter to keep only the nc and c cell lines
-              filter(cl_id %in% c(nc,cancer)) %>%
+              filter(cl_id %in% c(nc, cancer)) %>%
               # filter to keep only the substrate of interest
               filter(sub_id == s)
             # check there is one cancer and one non-cancer cell line
@@ -131,31 +164,27 @@ for (t in tissues_of_interest) {
             if (nrow(temp.data %>% 
                      select(cl_id, status) %>% 
                      distinct()) == 2) {
-              # significance test
-              # Adapted from https://rcompanion.org/handbook/F_15.html
-              t <- percentileTest(feature_value ~ status,
-                                  data = temp.data,
-                                  test = "median",
-                                  r    = 5000)
-              round(t$Result$p.value, 3)
+              # perform permutation test
+              perm_test(temp.data, reps)
             }
             # if condition not met than just return NA
             else { NA }
           }
           # store the pvalues  
-          stat.test[[f]][[nc]][cancer, ] <- pval 
+          temp.test[cancer, ] <- pval 
         }
         
-        # adjust for multiple testing using BH correction
-        p <- as.vector(as.matrix(stat.test[[f]][[nc]]))
-        stat.test.bh[[f]][[nc]] <- matrix(p.adjust(p, "BH"), 
-                                          nrow(stat.test[[f]][[nc]]), 
-                                          ncol(stat.test[[f]][[nc]]))
-        rownames(stat.test.bh[[f]][[nc]]) <- rownames(stat.test[[f]][[nc]])
-        colnames(stat.test.bh[[f]][[nc]]) <- colnames(stat.test[[f]][[nc]])
+        temp.test <- temp.test %>%
+          rownames_to_column(var = "cancer") %>%
+          # add the non-cancer cell line name
+          mutate(non_cancer = ifelse(str_equal(nc, "MCF10A-JSB"), "MCF10A", nc))
+        
+        stat.test[[f]] <- rbind(stat.test[[f]], temp.test)
       }
     }
-  }
   
-  save(stat.test.bh, file = paste0(t, "_BH_adj_pvals.RData"))
+    # order the column
+    stat.test[[f]] <- stat.test[[f]][, c("non_cancer", "cancer", subs)]
+  }
+  save(stat.test, file = paste0(t, "_pvals.RData"))
 }

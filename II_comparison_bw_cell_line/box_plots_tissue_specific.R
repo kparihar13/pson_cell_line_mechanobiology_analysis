@@ -125,7 +125,7 @@ for (t in tissues_of_interest) {
     pull(cl_id)
   
   # load the pre-computed BH corrected p-values
-  load(paste0(t,"_BH_adj_pvals.RData"))
+  load(paste0(t,"_pvals.RData"))
 
   # create annotation dataframe for adding p-values to the boxplots
   # adapted from https://const-ae.github.io/ggsignif/
@@ -253,29 +253,16 @@ for (t in tissues_of_interest) {
       }
       
       # create dataframe containing pvalues, to be merged with anno.df.ext
-      pvalue.df <- NULL
-      for (nc in 1:nrow(nc_cells)) {
-        # extarct the adj pval for a non-cancer cell line
-        temp.anno <- stat.test.bh[[f]][[nc_cells$cl_id[nc]]] %>%
-          t() %>% 
-          as.data.frame() %>%
-          rownames_to_column(var = "sub_id") %>%
-          # pivot to longer format dataframe
-          pivot_longer(cols = c_cells, 
-                       names_to = "cl_id", 
-                       values_to = "adj.pval") %>%
-          # remove cases with NA which correspond to number of observations < min_cutoff
-          drop_na() 
-        
-        # add column to specify which nc cell
-        temp.anno$noncan <- rep(nc_cells$label[nc], nrow(temp.anno))
-        
-        # add temp_anno to apvalue.df
-        # if pvalue.df is empty then assign temp.anno
-        if(is.null(pvalue.df)){ pvalue.df <- temp.anno }
-        # else concatenate the temp.anno to pvalue.df
-        else { pvalue.df <- rbind(pvalue.df, temp.anno) }
-      }
+      pvalue.df <- stat.test[[f]] %>%
+        pivot_longer(cols = -c(non_cancer, cancer), 
+                     names_to = "sub_id", 
+                     values_to = "adj.pval") %>%
+        # remove cases with NA which correspond to number of observations < min_cutoff
+        drop_na() %>%
+        # rename non_cancer and cancer columns
+        rename(noncan = non_cancer,
+               cl_id = cancer) %>%
+        mutate(noncan = paste0(noncan, "(N)"))
       
       # change numeric pvalues to ***, **, *, ns
       pvalue.df <- pvalue.df %>%

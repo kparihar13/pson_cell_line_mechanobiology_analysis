@@ -127,7 +127,7 @@ for (f in features) {
     arrange(cl_id) %>%
     column_to_rownames("cl_id")
 
-  pvalue_bh_corrected <- pvalue_bh_corrected %>%
+  fold_pvalue <- fold_pvalue %>%
     rownames_to_column(var = "cl_id") %>%
     # order in desired order of cell lines
     mutate(cl_id = factor(cl_id, levels = cell_line_label_colors_main$cl_id)) %>%
@@ -137,10 +137,10 @@ for (f in features) {
   # log2 transform the ratio values
   fold_value <- log2(fold_value)
 
-  # change the colnames for fold_value and pvalue_bh_corrected for plotting convenience
+  # change the colnames for fold_value and fold_pvalue for plotting convenience
   for (fc in names(folds)) {
     colnames(fold_value)[which(colnames(fold_value) == fc)] <- folds[[fc]]
-    colnames(pvalue_bh_corrected)[which(colnames(pvalue_bh_corrected) == fc)] <- folds[[fc]]
+    colnames(fold_pvalue)[which(colnames(fold_pvalue) == fc)] <- folds[[fc]]
   }
 
   # get the colors for cell lines
@@ -255,7 +255,7 @@ for (f in features) {
   # add the significance level markers, fold names, feature name and x-axis label
   for (k in 1:length(names(fold_names))) {
     decorate_annotation(names(fold_names)[k], {
-      pvalue_temp <- pvalue_bh_corrected %>%
+      pvalue_temp <- fold_pvalue %>%
         select(names(fold_names)[k]) %>%
         pull()
       fold_temp <- fold_value %>%

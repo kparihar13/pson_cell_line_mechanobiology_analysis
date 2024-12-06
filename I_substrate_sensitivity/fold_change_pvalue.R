@@ -135,6 +135,41 @@ for (f in features) {
   rownames(fold_pvalue) <- cell_lines
   colnames(fold_pvalue) <- names(folds)
   
+  # flatten fold_pvalue for Benjamini-Hochberg correction
+  pvalue_bh_corrected <- fold_pvalue %>%
+    rownames_to_column(var = "cell_line") %>%
+    # convert to long format
+    gather(key = "fold", value = "pvalue", -cell_line) %>%
+    mutate(cell_line_fold = paste(cell_line, fold, sep = "_")) %>%
+    select(cell_line_fold, pvalue) %>%
+    column_to_rownames(var = "cell_line_fold") %>%
+    as.matrix()
+  # convert to named vector
+  cell_line_fold <- rownames(pvalue_bh_corrected)
+  pvalue_bh_corrected <- as.vector(pvalue_bh_corrected)
+  names(pvalue_bh_corrected) <- cell_line_fold
+  
+  # perform Benjamini-Hochberg correction
+  pvalue_bh_corrected <- p.adjust(pvalue_bh_corrected, method = "BH")
+  
+  # convert corrected values back into data frame
+  pvalue_bh_corrected <- as.matrix(pvalue_bh_corrected)
+  colnames(pvalue_bh_corrected) <- "pvalue"
+  pvalue_bh_corrected <- as.data.frame(pvalue_bh_corrected) %>%
+    rownames_to_column(var = "cell_line_fold") %>%
+    mutate(cell_line = gsub("_.*", "", cell_line_fold),
+           fold = gsub(".*_", "", cell_line_fold)) %>%
+    select(cell_line, fold, pvalue) %>%
+    # convert to wide format
+    spread(key = "fold", value = "pvalue") %>%
+    # order cell lines same as the names in the fold_pvalue
+    mutate(cell_line = factor(cell_line, levels = rownames(fold_pvalue))) %>%
+    arrange(cell_line) %>%
+    column_to_rownames(var = "cell_line")
+  
+  # order the columns of pvalue_bh_corrected
+  pvalue_bh_corrected <- pvalue_bh_corrected[, colnames(fold_pvalue)]
+  
   # save the fold values and p-values
-  save(fold_value, fold_pvalue, file = paste(f,"_folds.RData", sep = ""))
+  save(fold_value, pvalue_bh_corrected, file = paste(f,"_folds.RData", sep = ""))
 }

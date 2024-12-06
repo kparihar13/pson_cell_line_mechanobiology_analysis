@@ -78,9 +78,9 @@ for (f in features){
 # - '*' if pvalue < 0.05
 # - 'ns' otherwise
 pval.signif <- function(x) {
-  if (x < 0.001) { return("***") }
-  else if (x < 0.01) { return("**") }
-  else if (x < 0.05) { return("*") }
+  if (x < 0.01) { return("***") }
+  else if (x < 0.05) { return("**") }
+  else if (x < 0.1) { return("*") }
   else { return("ns") }
 }
 
@@ -125,7 +125,7 @@ for (t in tissues_of_interest) {
     pull(cl_id)
   
   # load the pre-computed BH corrected p-values
-  load(paste0(t,"_pvals.RData"))
+  load(paste0(t,"_BH_adj_pvals.RData"))
 
   # create annotation dataframe for adding p-values to the boxplots
   # adapted from https://const-ae.github.io/ggsignif/
@@ -253,7 +253,7 @@ for (t in tissues_of_interest) {
       }
       
       # create dataframe containing pvalues, to be merged with anno.df.ext
-      pvalue.df <- stat.test[[f]] %>%
+      pvalue.df <- stat.test.bh[[f]] %>%
         pivot_longer(cols = -c(non_cancer, cancer), 
                      names_to = "sub_id", 
                      values_to = "adj.pval") %>%

@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.25)  3 DEC 2024 21:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.25)  6 DEC 2024 18:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/kshitiz/Desktop/PhD/Aim1/Leidos_cleaned_up/Supplementary_Information/SI
-(/home/kshitiz/Desktop/PhD/Aim1/Leidos_cleaned_up/Supplementary_Information/SI.tex
+**/home/kshitiz/Desktop/PhD/Aim1/Leidos_mechanics/Supplementary_Information/SI
+(/home/kshitiz/Desktop/PhD/Aim1/Leidos_mechanics/Supplementary_Information/SI.tex
 LaTeX2e <2020-02-02> patch level 2
 L3 programming layer <2020-02-14> (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
@@ -767,21 +767,21 @@ Package pdftex.def Info: ../Figures/supplementary_figure1.png  used on input lin
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5 <../Figures/supplementary_figure1.png>]
-<../Figures/Supplementary_Figure2/supplementary_figure2.png, id=35, 4329.17375pt x 3835.32875pt>
+<../Figures/Supplementary_Figure2/supplementary_figure2.png, id=35, 4329.17375pt x 3839.34375pt>
 File: ../Figures/Supplementary_Figure2/supplementary_figure2.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure2/supplementary_figure2.png>
 Package pdftex.def Info: ../Figures/Supplementary_Figure2/supplementary_figure2.png  used on input line 115.
-(pdftex.def)             Requested size: 562.81235pt x 498.61024pt.
+(pdftex.def)             Requested size: 562.81235pt x 499.13222pt.
 
 Overfull \hbox (38.58516pt too wide) in paragraph at lines 113--118
  []|  [] 
  []
 
-<../Figures/Supplementary_Figure3/supplementary_figure3.png, id=36, 2429.075pt x 3605.47pt>
+<../Figures/Supplementary_Figure3/supplementary_figure3.png, id=36, 2429.075pt x 3603.4625pt>
 File: ../Figures/Supplementary_Figure3/supplementary_figure3.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure3/supplementary_figure3.png>
 Package pdftex.def Info: ../Figures/Supplementary_Figure3/supplementary_figure3.png  used on input line 124.
-(pdftex.def)             Requested size: 315.79083pt x 468.72755pt.
+(pdftex.def)             Requested size: 315.79083pt x 468.46657pt.
 [6
 
  <../Figures/Supplementary_Figure2/supplementary_figure2.png>]
@@ -867,22 +867,18 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 214.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 214.
 Package rerunfilecheck Info: File `SI.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 214.
  ) 
 Here is how much of TeX's memory you used:
- 10674 strings out of 481239
- 168458 string characters out of 5920377
- 503863 words of memory out of 5000000
+ 10662 strings out of 481239
+ 168325 string characters out of 5920377
+ 503989 words of memory out of 5000000
  25602 multiletter control sequences out of 15000+600000
- 575953 words of font info for 96 fonts, out of 8000000 for 9000
+ 575455 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,11n,45p,968b,398s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,11n,45p,1031b,398s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb>
-Output written on SI.pdf (17 pages, 5480597 bytes).
+Output written on SI.pdf (17 pages, 5478863 bytes).
 PDF statistics:
  135 PDF objects out of 1000 (max. 8388607)
  100 compressed objects within 1 object stream

@@ -127,7 +127,7 @@ for (f in features) {
     arrange(cl_id) %>%
     column_to_rownames("cl_id")
 
-  fold_pvalue <- fold_pvalue %>%
+  pvalue_bh_corrected <- pvalue_bh_corrected %>%
     rownames_to_column(var = "cl_id") %>%
     # order in desired order of cell lines
     mutate(cl_id = factor(cl_id, levels = cell_line_label_colors_main$cl_id)) %>%
@@ -137,10 +137,10 @@ for (f in features) {
   # log2 transform the ratio values
   fold_value <- log2(fold_value)
 
-  # change the colnames for fold_value and fold_pvalue for plotting convenience
+  # change the colnames for fold_value and pvalue_bh_corrected for plotting convenience
   for (fc in names(folds)) {
     colnames(fold_value)[which(colnames(fold_value) == fc)] <- folds[[fc]]
-    colnames(fold_pvalue)[which(colnames(fold_pvalue) == fc)] <- folds[[fc]]
+    colnames(pvalue_bh_corrected)[which(colnames(pvalue_bh_corrected) == fc)] <- folds[[fc]]
   }
 
   # get the colors for cell lines
@@ -255,7 +255,7 @@ for (f in features) {
   # add the significance level markers, fold names, feature name and x-axis label
   for (k in 1:length(names(fold_names))) {
     decorate_annotation(names(fold_names)[k], {
-      pvalue_temp <- fold_pvalue %>%
+      pvalue_temp <- pvalue_bh_corrected %>%
         select(names(fold_names)[k]) %>%
         pull()
       fold_temp <- fold_value %>%
@@ -269,7 +269,7 @@ for (f in features) {
       eps <- 1 
       for (i in 1:length(pvalue_temp)) {
         y_pvalue <- unit((length(pvalue_temp) - i + 0.4) * 130 / length(pvalue_temp), "mm")
-        if (pvalue_temp[[i]] <= 0.001) {
+        if (pvalue_temp[[i]] <= 0.01) {
           if (abs(fold_temp[[i]]) > 2) {
             x.temp <- sign(fold_temp[[i]]) * 2
             grid.text(paste(sprintf(fold_temp[[i]], fmt = "%#.1f"), "***", sep = ""),
@@ -292,7 +292,7 @@ for (f in features) {
               gp = gpar(fontsize = 8)
             )
           }
-        } else if (pvalue_temp[[i]] <= 0.01) {
+        } else if (pvalue_temp[[i]] <= 0.05) {
           if (abs(fold_temp[[i]]) > 2) {
             x.temp <- sign(fold_temp[[i]]) * 2
             grid.text(paste(sprintf(fold_temp[[i]], fmt = "%#.1f"), "**", sep = ""),
@@ -314,7 +314,7 @@ for (f in features) {
               y = y_pvalue, gp = gpar(fontsize = 8)
             )
           }
-        } else if (pvalue_temp[[i]] <= 0.05) {
+        } else if (pvalue_temp[[i]] <= 0.1) {
           grid.text("*",
             x = unit(0.5 + 0.05 * sign(fold_temp[[i]]), "npc") +
               unit(eps * fold_temp[[i]] * 1.25 / 2.2, "cm"),

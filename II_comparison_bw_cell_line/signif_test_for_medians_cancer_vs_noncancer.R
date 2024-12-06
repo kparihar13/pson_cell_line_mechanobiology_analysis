@@ -4,6 +4,7 @@
 # load packages -------
 suppressPackageStartupMessages({
   library(tidyverse)
+  library(rcompanion)
   library(foreach)
   library(doParallel)
 })
@@ -117,6 +118,8 @@ for (t in tissues_of_interest) {
   
   # stat.test with respect to each of the non-cancer cell lines
   stat.test <- setNames(vector("list", length(features)), features)
+  # to store the adjusted pvalues after BH correction
+  stat.test.bh <- setNames(vector("list", length(features)), features)
   
   for (f in features) {
     
@@ -141,6 +144,7 @@ for (t in tissues_of_interest) {
       
       # define an empty dataframe for storing the pvalues
       stat.test[[f]] <- data.frame()
+      stat.test.bh[[f]] <- data.frame()
       
       for (nc in nc_cells) {
         temp.test <- matrix(NA, length(c_cells), length(subs))
@@ -177,14 +181,38 @@ for (t in tissues_of_interest) {
         temp.test <- temp.test %>%
           rownames_to_column(var = "cancer") %>%
           # add the non-cancer cell line name
-          mutate(non_cancer = ifelse(str_equal(nc, "MCF10A-JSB"), "MCF10A", nc))
+          mutate(non_cancer = ifelse(str_equal(nc, "MCF10A-JSB"), "MCF10A", nc)) %>%
+          pivot_longer(cols = -c(non_cancer, cancer), 
+                       names_to = "sub_id", 
+                       values_to = "pval") %>%
+          mutate(test_name = paste0(non_cancer, "_", cancer, "_", sub_id)) %>%
+          select(test_name, pval)
         
         stat.test[[f]] <- rbind(stat.test[[f]], temp.test)
       }
     }
   
-    # order the column
-    stat.test[[f]] <- stat.test[[f]][, c("non_cancer", "cancer", subs)]
+    stat.test[[f]] <- stat.test[[f]] %>% 
+      column_to_rownames(var = "test_name")
+    
+    # adjust for multiple testing using BH correction
+    # prepare the data for BH correction
+    stat.test.bh[[f]] <- as.vector(as.matrix(stat.test[[f]]))
+    names(stat.test.bh[[f]]) <- rownames(stat.test[[f]])
+    # perform BH correction
+    stat.test.bh[[f]] <- p.adjust(stat.test.bh[[f]], method = "BH")
+    # convert the vector back to a dataframe
+    stat.test.bh[[f]] <- as.matrix(stat.test.bh[[f]])
+    colnames(stat.test.bh[[f]]) <- "pval"
+    stat.test.bh[[f]] <- as.data.frame(stat.test.bh[[f]]) %>%
+      rownames_to_column(var = "test_name") %>%
+      separate(test_name, c("non_cancer", "cancer", "sub_id"), sep = "_") %>%
+      # pivot data to wide format
+      pivot_wider(names_from = sub_id, values_from = pval)
+    
+    # order the columns
+    stat.test.bh[[f]] <- stat.test.bh[[f]][, c("non_cancer", "cancer", subs)]
   }
-  save(stat.test, file = paste0(t, "_pvals.RData"))
+  
+  save(stat.test.bh, file = paste0(t, "_BH_adj_pvals.RData"))
 }

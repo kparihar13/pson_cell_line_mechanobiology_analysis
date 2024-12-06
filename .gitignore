@@ -3,6 +3,5 @@ Figures/README
 ATCC_SOPs/*
 */.Rhistory
 data_from_pkl_files_colab/*
-private_README
-*/with_BH_correction/*
-*/rcompanion_tests/*
+local_README
+*/other_tries/*

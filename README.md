@@ -17,4 +17,4 @@ corrplot: 0.92\
 Hmisc: 5.1.2\
 kableExtra: 1.4.0\
 patchwork: 1.2.0\
-plotrix: 3.8.4\
+plotrix: 3.8.4

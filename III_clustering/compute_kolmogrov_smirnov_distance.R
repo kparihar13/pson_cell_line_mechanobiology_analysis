@@ -4,7 +4,7 @@
 # Load packages --------------
 suppressPackageStartupMessages({
   library(tidyverse)
-  # geostats is a package for computing the 1-Wasserstein distance
+  # geostats is a package for computing the KS distance
   library(geostats)
 })
 

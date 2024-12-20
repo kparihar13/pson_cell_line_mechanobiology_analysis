@@ -1,8 +1,8 @@
 
 ### Version of R packages used
-tidyverse: 2.0.0
-foreach: 1.5.2
-doParallel: 1.0.17
+tidyverse: 2.0.0\
+foreach: 1.5.2\
+doParallel: 1.0.17\
 RColorBrewer: 1.1.3
 ComplexHeatmap: 2.20.0
 circlize: 0.4.16

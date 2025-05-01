@@ -12,70 +12,87 @@ suppressPackageStartupMessages({
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 # global parameters -------
-features <- c("area", "circularity", "aspect_ratio",
-              "cell_stiffness", "motility")
+features <- c(
+  "area", "circularity", "aspect_ratio",
+  "cell_stiffness", "motility"
+)
 # define the metric to be used for clustering
 # "wass1" (1-Wasserstein) or "kolm_smir" (Kolmogrov-Smirnov)
-metric_of_interest <- "wass1"
+metric_of_interest <- "kolm_smir"
 
 # load distance matrix -----------
 metric <- setNames(vector("list", length(features)), features)
 for (f in features) {
-  metric[[f]] <- read.csv(paste(f, "/", metric_of_interest, ".csv", sep=""))
+  metric[[f]] <- read.csv(paste(f, "/", metric_of_interest, ".csv", sep = ""))
 }
 
 # Helper function for clustering -------
-# ConsensusClusteringPlus output object, distance object, 
+# ConsensusClusteringPlus output object, distance object,
 # max number of clusters K -> ggplots
 # produces line plots for cluster statistics (PAC, CHI) vs number of clusters
-cluster.statistics <- function(ccout, metric.dist, K){
-  # named list to store cluster statistics 
-  cluster.metrics <- setNames(vector("list", 3), 
-                              c("k","PAC","CHI"))
-  
+cluster.statistics <- function(ccout, metric.dist, K) {
+  # named list to store cluster statistics
+  cluster.metrics <- setNames(
+    vector("list", 3),
+    c("k", "PAC", "CHI")
+  )
+
   # total number of cell line-substrate pairs
   N <- nrow(as.matrix(metric.dist))
-  
+
   for (k in 2:K) {
     cluster.metrics[["k"]] <- c(cluster.metrics[["k"]], k)
-    
+
     # PAC calculation based on definition in
     # https://www.nature.com/articles/s41598-020-58766-1#Sec11
-    CDF01 <- sum(ccout[[k]]$consensusMatrix[which(lower.tri(ccout[[k]]$consensusMatrix))] <= 0.1)/(N*(N - 1)/2)
-    CDF09 <- sum(ccout[[k]]$consensusMatrix[which(lower.tri(ccout[[k]]$consensusMatrix))] <= 0.9)/(N*(N - 1)/2)
-    cluster.metrics[["PAC"]] <- c(cluster.metrics[["PAC"]], 
-                                  round(CDF09 - CDF01, 3))
+    CDF01 <- sum(ccout[[k]]$consensusMatrix[which(lower.tri(ccout[[k]]$consensusMatrix))] <= 0.1) / (N * (N - 1) / 2)
+    CDF09 <- sum(ccout[[k]]$consensusMatrix[which(lower.tri(ccout[[k]]$consensusMatrix))] <= 0.9) / (N * (N - 1) / 2)
+    cluster.metrics[["PAC"]] <- c(
+      cluster.metrics[["PAC"]],
+      round(CDF09 - CDF01, 3)
+    )
 
     # CHI
-    cluster.metrics[["CHI"]] <- c(cluster.metrics[["CHI"]], 
-                                  round(cluster.stats(metric.dist, 
-                                                      ccout[[k]]$consensusClass)$ch, 2))
-    
+    cluster.metrics[["CHI"]] <- c(
+      cluster.metrics[["CHI"]],
+      round(cluster.stats(
+        metric.dist,
+        ccout[[k]]$consensusClass
+      )$ch, 2)
+    )
   }
 
-  cluster.metric <- cluster.metrics %>% 
+  cluster.metric <- cluster.metrics %>%
     as_tibble()
-  
-  plt.pac <- cluster.metric %>% 
+
+  plt.pac <- cluster.metric %>%
     ggplot(aes(x = k, y = PAC)) +
     geom_line() +
     geom_point() +
-    labs(x = "Number of Clusters",
-         y = "Proportion of ambigous\n clustering (PAC)") +
+    labs(
+      x = "Number of Clusters",
+      y = "Proportion of ambigous\n clustering (PAC)"
+    ) +
     theme_bw() +
-    theme(axis.text = element_text(size = 8),
-          axis.title = element_text(size = 8))
+    theme(
+      axis.text = element_text(size = 8),
+      axis.title = element_text(size = 8)
+    )
 
   plt.chi <- cluster.metric %>%
     ggplot(aes(x = k, y = CHI)) +
     geom_line() +
     geom_point() +
-    labs(x = "Number of Clusters",
-         y = "Calinski-Harabasz Index\n (CHI)") +
+    labs(
+      x = "Number of Clusters",
+      y = "Calinski-Harabasz Index\n (CHI)"
+    ) +
     theme_bw() +
-    theme(axis.text = element_text(size = 8),
-          axis.title = element_text(size = 8))
-  
+    theme(
+      axis.text = element_text(size = 8),
+      axis.title = element_text(size = 8)
+    )
+
   return(list(plt.pac, plt.chi))
 }
 
@@ -92,61 +109,69 @@ icl <- setNames(vector("list", length(features)), features)
 
 # iterate through each feature
 for (f in features) {
-  
   print(paste0("Performing consensus clustering on ", f))
-  
+
   # folder where plots produced internally by ConsensusClusterPlus will be saved
   folder <- paste0(f, "/", metric_of_interest, "_consensus_clustering")
 
   # ConsensusClusterPlus: determining cluster number and class membership by stability evidence
-  ccout[[f]] <- ConsensusClusterPlus(d = as.dist(metric[[f]]),
-                                     # max number to clusters to evaluate
-                                     maxK = 9,
-                                     # number of times to subsample
-                                     reps = 1000,
-                                     # proportion of items to sample
-                                     # i.e. 80% of the cell line-substrate pairs are sampled
-                                     # for creating each subsample set
-                                     pItem = 0.8,
-                                     # clustering algorithm to use on the
-                                     # subsampled distance matriux
-                                     clusterAlg = "pam",
-                                     # seed for reproducibility
-                                     seed = 10,
-                                     # folder to save plots
-                                     title = folder,
-                                     # file type for saving plots
-                                     plot = "png")
+  ccout[[f]] <- ConsensusClusterPlus(
+    d = as.dist(metric[[f]]),
+    # max number to clusters to evaluate
+    maxK = 9,
+    # number of times to subsample
+    reps = 1000,
+    # proportion of items to sample
+    # i.e. 80% of the cell line-substrate pairs are sampled
+    # for creating each subsample set
+    pItem = 0.8,
+    # clustering algorithm to use on the
+    # subsampled distance matriux
+    clusterAlg = "pam",
+    # seed for reproducibility
+    seed = 10,
+    # folder to save plots
+    title = folder,
+    # file type for saving plots
+    plot = "png"
+  )
 
   # calculate cluster-consensus and item-consensus
   icl[[f]] <- calcICL(ccout[[f]])
-  
+
   # plot cluster statistics, PAC and CHI
   plts <- cluster.statistics(ccout[[f]], as.dist(metric[[f]]), 9)
-  
+
   # save the plots
-  if (metric_of_interest == "wass1")
-    if (f != "circularity") {
-      ggsave(paste0("../Figures/Supplementary_Figure7/", f, "_pac_chi.png"), 
-             plot = plot_grid(plotlist = plts, ncol = 2, nrow = 1), 
-             dpi = 300, width = 1000, height = 500, units = "px")
-    } else {
-      ggsave(paste0("../Figures/Supplementary_Figure8/", f, "_pac_chi.png"), 
-             plot = plot_grid(plotlist = plts, ncol = 2, nrow = 1), 
-             dpi = 300, width = 1000, height = 500, units = "px")
+  if (metric_of_interest == "wass1") {
+    if (f %in% c("area", "cell_stiffness", "motility")) {
+      ggsave(paste0("../Figures/Supplementary_Figure11/", f, "_pac_chi.png"),
+        plot = plot_grid(plotlist = plts, ncol = 2, nrow = 1),
+        dpi = 300, width = 1000, height = 500, units = "px"
+      )
+    } else if (f == "aspect_ratio") {
+      ggsave(paste0("../Figures/Supplementary_Figure12/", f, "_pac_chi.png"),
+        plot = plot_grid(plotlist = plts, ncol = 2, nrow = 1),
+        dpi = 300, width = 1000, height = 500, units = "px"
+      )
+    } else if (f == "circularity") {
+      ggsave(paste0("../Figures/Supplementary_Figure13/", f, "_pac_chi.png"),
+        plot = plot_grid(plotlist = plts, ncol = 2, nrow = 1),
+        dpi = 300, width = 1000, height = 500, units = "px"
+      )
     }
-  else
-    if (f %in% c("area", "cell_stiffness")) {
-      ggsave(paste0("../Figures/Supplementary_Figure9/", f, "_pac_chi.png"), 
-             plot = plot_grid(plotlist = plts, ncol = 2, nrow = 1), 
-             dpi = 300, width = 1000, height = 500, units = "px")
-    } else {
-      ggsave(paste0(f, "/", metric_of_interest, "_consensus_clustering/pac_chi.png"), 
-             plot = plot_grid(plotlist = plts, ncol = 2, nrow = 1), 
-             dpi = 300, width = 1000, height = 500, units = "px")
-    }
+  } else if (f %in% c("area", "cell_stiffness")) {
+    ggsave(paste0("../Figures/Supplementary_Figure14/", f, "_pac_chi.png"),
+      plot = plot_grid(plotlist = plts, ncol = 2, nrow = 1),
+      dpi = 300, width = 1000, height = 500, units = "px"
+    )
+  } else {
+    ggsave(paste0(f, "/", metric_of_interest, "_consensus_clustering/pac_chi.png"),
+      plot = plot_grid(plotlist = plts, ncol = 2, nrow = 1),
+      dpi = 300, width = 1000, height = 500, units = "px"
+    )
+  }
 }
 
 # save ccout and icl in <feature_name>.RData
 save(ccout, icl, file = paste0(metric_of_interest, "_consensus_clustering.RData"))
-

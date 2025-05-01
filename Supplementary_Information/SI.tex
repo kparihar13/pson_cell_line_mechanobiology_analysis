@@ -99,116 +99,235 @@ Ravi Radhakrishnan$^{1,2}$
 
 \input{supplementary_table_motility.tex}
 
-%\section{Sensitivity to change in substrate conditions}
-
+\clearpage
 \begin{figure}
     \centering
     \includegraphics[scale=0.8]{../Figures/supplementary_figure1.png}
     \caption{Spearman correlation matrix using the median values of the phenotypic features for the cell line-substrate pairs. Only statistically significant correlations are shown.
-    Note that in this analysis only those cell line-substrate pairs which have at least 25 data points for each of the physical feature are considered.}
+    Note that in this analysis only those cell line-substrate pairs are considered which have at least 25 data points for each of the physical feature.}
     \label{fig:fig1}
 \end{figure}
-\clearpage
+
 \begin{figure}[H]
-    \hspace*{-2cm}
+    \vspace*{-0.65cm}
     \centering
-    \includegraphics[scale=0.13]{../Figures/Supplementary_Figure2/supplementary_figure2.png}
-    \caption{For each cell line, the ratio of the median values for (A) area, (B) shape (aspect ratio), (C) cell stiffness, and (D) speed as a measure of the phenotypic sensitivity to substrate change. 
-    (HA Coll-FN: HA Coll/HA FN, 500Pa Coll-FN: 500Pa FN/500Pa Coll, 30kPa Coll-FN: 30kPa Coll/30kPa FN, 30kPa-HA Coll: 30kPa Coll/HA Coll, 30kPa-HA FN: 30kPa FN/HA FN). (N) refers to non-malignant (normal) cell lines. 
-    ***p-value < 0.01; **p-value < 0.05; *p-value < , adjusted for multiple testing using Benjamini-Hochberg procedure. For each cell line on a particular substrate, $n > 25$ cells. See supplementary tables 1-3 for the exact value of $n$ for the cell lines.}
+    \includegraphics{../Figures/Supplementary_Figure2/supplementary_figure2.png}
+    \caption{For each cell line, the ratio of the median values for (a) area and (b) cell stiffness as a measure of the phenotypic sensitivity to substrate change. 
+    (HA Coll-FN: HA Coll/HA FN, 500Pa Coll-FN: 500Pa FN/500Pa Coll, 30kPa Coll-FN: 30kPa Coll/30kPa FN, 30kPa-HA Coll: 30kPa Coll/HA Coll, 30kPa-HA FN: 30kPa FN/HA FN, 
+    Glass-30kPa Coll: Glass/30kPa Coll, Glass-30kPa FN: Glass/30kPa FN). (N) refers to non-malignant (normal) cell lines. 
+    ***p-value < 0.01; **p-value < 0.05; *p-value < 0.1, adjusted for multiple testing using Benjamini-Hochberg procedure. 
+    For each cell line, phenotypic sensitivity to substrate change is calculated only if there are at least 25 data points $(n \geq 25)$ for the physical feature of interest on both the substrates.
+    See supplementary tables 1 and 2 for the exact value of $n$ for the cell lines.}
     \label{fig:fig2}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.13]{../Figures/Supplementary_Figure3/supplementary_figure3.png}
-    \caption{For each cell line, the ratio of the median values for circularity as a measure of the phenotypic sensitivity to substrate change. 
-    (30k-500Pa Coll: 30kPa Coll/500Pa Coll, 30k-500Pa FN: 30kPa FN/500Pa FN, HA-500Pa Coll: HA Coll/500Pa Coll, HA-500Pa  FN: HA FN/500Pa FN, Glass-30kPa Coll: Glass/30kPa Coll, Glass-30kPa FN: Glass/30kPa FN, 
-    HA Coll-FN: HA Coll/HA FN, 500Pa Coll-FN: 500Pa FN/500Pa Coll, 30kPa Coll-FN: 30kPa Coll/30kPa FN, 30kPa-HA Coll: 30kPa Coll/HA Coll, 30kPa-HA FN: 30kPa FN/HA FN). (N) refers to non-malignant (normal) cell lines.
-    ***p-value < 0.01; **p-value < 0.05; *p-value < 0.1, adjusted for multiple testing using Benjamini-Hochberg procedure. For each cell line on a particular substrate, $n > 25$ cells. See supplementary tables 1-3 for the exact value of $n$ for the cell lines.}
+    \includegraphics{../Figures/Supplementary_Figure3/supplementary_figure3.png}
+    \caption{For each cell line, the ratio of the median values for cell speed as a measure of the phenotypic sensitivity to substrate change. 
+    (HA Coll-FN: HA Coll/HA FN, 500Pa Coll-FN: 500Pa FN/500Pa Coll, 30kPa Coll-FN: 30kPa Coll/30kPa FN, 30kPa-HA Coll: 30kPa Coll/HA Coll, 30kPa-HA FN: 30kPa FN/HA FN,
+    Glass-30kPa Coll: Glass/30kPa Coll, Glass-30kPa FN: Glass/30kPa FN). (N) refers to non-malignant (normal) cell lines. 
+    ***p-value < 0.01; **p-value < 0.05; *p-value < 0.1, adjusted for multiple testing using Benjamini-Hochberg procedure. 
+    For each cell line on a particular substrate, $n \geq 25$ cells. 
+    See supplementary tables 3 for the exact value of $n$ for the cell lines.}
     \label{fig:fig3}
 \end{figure}
 
-%\section{Comparison between cell lines}
-
 \begin{figure}[H]
-    \hspace*{-1.5cm}
+    \vspace*{-0.65cm}
     \centering
-    \includegraphics[scale=0.14]{../Figures/Supplementary_Figure4/supplementary_figure4.png}
-    \caption{KDEs for outlier-like distributions of (A) hTERT-HPNE cellular area across all substrates, and (B) Capan-1 cell stiffness across all substrates.
-    Median values of cell (A) aspect ratio, and (B) circularity across all the 7 different substrates, along with the kernel density estimates (KDE) for summarizing the distribution of feature values for each cell line. (N) refers to non-malignant (normal) cell lines.
-    Measurements from $n>200$ cells for each of the cell lines. See supplementary tables 1-3 for the exact value of $n$ for the cell lines.}
+    \includegraphics{../Figures/Supplementary_Figure4/supplementary_figure4.png}
+    \caption{For each cell line, the ratio of the median values for aspect ratio as a measure of the phenotypic sensitivity to substrate change. 
+    (30k-500Pa Coll: 30kPa Coll/500Pa Coll, 30k-500Pa FN: 30kPa FN/500Pa FN, HA-500Pa Coll: HA Coll/500Pa Coll, HA-500Pa  FN: HA FN/500Pa FN, Glass-30kPa Coll: Glass/30kPa Coll, Glass-30kPa FN: Glass/30kPa FN, 
+    HA Coll-FN: HA Coll/HA FN, 500Pa Coll-FN: 500Pa FN/500Pa Coll, 30kPa Coll-FN: 30kPa Coll/30kPa FN, 30kPa-HA Coll: 30kPa Coll/HA Coll, 30kPa-HA FN: 30kPa FN/HA FN). (N) refers to non-malignant (normal) cell lines.
+    ***p-value < 0.01; **p-value < 0.05; *p-value < 0.1, adjusted for multiple testing using Benjamini-Hochberg procedure. 
+    For each cell line on a particular substrate, $n \geq 25$ cells.
+    See supplementary tables 1 for the exact value of $n$ for the cell lines.}
     \label{fig:fig4}
 \end{figure}
 
 \begin{figure}[H]
-    \hspace*{-1.5cm}
+    \vspace*{-0.65cm}
     \centering
-    \includegraphics[scale=0.12]{../Figures/Supplementary_Figure5/supplementary_figure5.png}
-    \caption{}
+    \includegraphics{../Figures/Supplementary_Figure5/supplementary_figure5.png}
+    \caption{For each cell line, the ratio of the median values for circularity as a measure of the phenotypic sensitivity to substrate change. 
+    (30k-500Pa Coll: 30kPa Coll/500Pa Coll, 30k-500Pa FN: 30kPa FN/500Pa FN, HA-500Pa Coll: HA Coll/500Pa Coll, HA-500Pa  FN: HA FN/500Pa FN, Glass-30kPa Coll: Glass/30kPa Coll, Glass-30kPa FN: Glass/30kPa FN, 
+    HA Coll-FN: HA Coll/HA FN, 500Pa Coll-FN: 500Pa FN/500Pa Coll, 30kPa Coll-FN: 30kPa Coll/30kPa FN, 30kPa-HA Coll: 30kPa Coll/HA Coll, 30kPa-HA FN: 30kPa FN/HA FN). (N) refers to non-malignant (normal) cell lines.
+    ***p-value < 0.01; **p-value < 0.05; *p-value < 0.1, adjusted for multiple testing using Benjamini-Hochberg procedure. 
+    For each cell line on a particular substrate, $n \geq 25$ cells.
+    See supplementary tables 1 for the exact value of $n$ for the cell lines.}
     \label{fig:fig5}
 \end{figure}
-\begin{adjustwidth}{1cm}{1cm}
-  Supplementary Figure 5: Comparing tissue-specific normal and cancer cell behavior in terms of aspect ratio, and cicularity for (A) prostate, (B) panacrease, (C) lung, and (D) breast cell lines 
-  soft (500 Pa) and stiff (30 kPa) PAAm Coll and FN substrates, soft (500 Pa) HA substrates coated with Coll and FN, and glass. (N) refers to non-malignant (normal) cell lines.
-  ***p-value < 0.01; **p-value < 0.05; *p-value < 0.1, adjusted for multiple testing using Benjamini-Hochberg procedure. For each cell line on a particular substrate, $n > 25$ cells.
-  See supplementary tables 1-3 for the exact value of $n$ for the cell lines.
-\end{adjustwidth}
 
-% another option to get caption on next page
-% https://tex.stackexchange.com/questions/53315/how-to-put-large-figure-caption-on-separate-page-from-the-figure
-% Didn't use this one because if the caption was by itself on the whole page then it floated to the center of the page
-
-%\section{Clustering Analysis}
 \begin{figure}[H]
-    \hspace*{-2cm}
-    \vspace*{2cm}
     \centering
-    \includegraphics[scale=0.7]{../Figures/Supplementary_Figure6/supplementary_figure6.png}
-    \caption{}
+    \includegraphics{../Figures/Supplementary_Figure6/supplementary_figure6.png}
+    \caption{Median values of cell (a) area, (b) aspect ratio, and (c) circularity across all the 7 different substrates, along with the kernel density estimates (KDE) for summarizing the distribution of feature values for each cell line. (N) refers to non-malignant (normal) cell lines.
+    See supplementary figure 7c for the KDE of outlier-like distributions of hTERT-HPNE cellular area across all substrates.}
     \label{fig:fig6}
 \end{figure}
-\begin{adjustwidth}{1cm}{1cm}
-  Supplementary Figure 6: Principal component analysis (PCA) performed using the median values of cell area, aspect ratio, circularity, stiffness, and speedfrom all the cell line-substrate pairs.
-  Note that in this analysis only those cell line-substrate pairs which have at least 25 data points for each of the physical feature are considered.
-  (A) Vaiance explained by each of the PCs, and the loadings of the physical features on the first four PCs.
-  Pairwise scatter plots for the first four PCs, with the points colored by (B) the substrate type and (C) tissue type. 
-\end{adjustwidth}
 
 \begin{figure}[H]
+    \hspace*{-0.8cm}
     \centering
-    \includegraphics[scale=0.3]{../Figures/Supplementary_Figure7/supplementary_figure7.png} 
-    \caption{Clustering statistics (PAC and CHI) used for identifying the optimal number of clusters (mechanotypes) based on Wasserstein-1 distance and the corresponding consensus matrix for optimal cluster count $k$
-    of cell (A) area, (B) aspect ratio, (C) stiffness, and (D) speed.}
+    \includegraphics{../Figures/Supplementary_Figure7/supplementary_figure7.png}
+    \caption{Median values of (a) cell stiffness and (b) cell speed across all the 7 different substrates, along with the kernel density estimates (KDE) for summarizing the distribution of feature values for each cell line. (N) refers to non-malignant (normal) cell lines.
+    KDEs for outlier-like distributions of (c) hTERT-HPNE cellular area across all substrates, and (d) Capan-1 cell stiffness across all substrates.}
     \label{fig:fig7}
 \end{figure}
 
 \begin{figure}[H]
-    \hspace*{-1cm}
+    \hspace*{-0.8cm}
     \centering
-    \includegraphics[scale=0.282]{../Figures/Supplementary_Figure8/supplementary_figure8.png} 
-    \caption{}
+    \includegraphics{../Figures/Supplementary_Figure8/supplementary_figure8.png}
+    \caption{Comparing tissue-specific normal and cancer cell behavior in terms of cell (a) area, (b) aspect ratio, (c) stiffness, and (d) speed for pancreatic cell lines 
+    soft (500 Pa) and stiff (30 kPa) PAAm Coll and FN substrates, soft (500 Pa) HA substrates coated with Coll and FN, and glass. (N) refers to non-malignant (normal) cell lines.
+    ***p-value < 0.01; **p-value < 0.05; *p-value < 0.1, adjusted for multiple testing using Benjamini-Hochberg procedure. 
+    The number of measurements for the physical feature of interest is at least 25 $(n \geq 25)$ for each cell line on a particular substrate. 
+    See supplementary tables 1-3 for the exact value of $n$ for the cell lines.}
     \label{fig:fig8}
 \end{figure}
-\begin{adjustwidth}{1cm}{1cm}
-Supplementary Figure 8: (A) Clustering statistics (PAC and CHI) used for identifying the optimal number of clusters (mechanotypes) based on Wasserstein-1 distance and the corresponding consensus matrix for optimal cluster count $k$
-of circularity. (B) Mechanotypes for circularity, whereby the heatmap shows the phenotypic class for each cell line-substrate pair and the KDEs correspond to characteristic density function for each class. 
-The numeric values shown in the heatmap correspond to median values of circularity for each cell line-substrate pair. (N) refers to non-malignant (normal) cell lines. 
-Note that in this analysis only those cell line-substrate pairs which have at least 25 data points for the physical feature of interest are considered.
-\end{adjustwidth}
 
-\begin{figure}
+\begin{figure}[H]
+    \hspace*{-0.8cm}
     \centering
-    \includegraphics[scale=0.95]{../Figures/Supplementary_Figure9/supplementary_figure9.png} 
-    \caption{}
+    \includegraphics{../Figures/Supplementary_Figure9/supplementary_figure9.png}
+    \caption{Comparing tissue-specific normal and cancer cell behavior in terms of aspect ratio, and cicularity for (a) breast, (b) lung, and (c) prostate cell lines 
+    soft (500 Pa) and stiff (30 kPa) PAAm Coll and FN substrates, soft (500 Pa) HA substrates coated with Coll and FN, and glass. (N) refers to non-malignant (normal) cell lines.
+    ***p-value < 0.01; **p-value < 0.05; *p-value < 0.1, adjusted for multiple testing using Benjamini-Hochberg procedure. 
+    For each cell line on a particular substrate, $n \geq 25$ cells.
+    See supplementary tables 1 for the exact value of $n$ for the cell lines.}
     \label{fig:fig9}
 \end{figure}
-\clearpage
+
+\begin{figure}[H]
+    \hspace*{-0.8cm}
+    \vspace*{2cm}
+    \centering
+    \includegraphics{../Figures/Supplementary_Figure10/supplementary_figure10.png}
+    \caption{}
+    \label{fig:fig10}
+\end{figure}
 \begin{adjustwidth}{1cm}{1cm}
-  Supplementary Figure 9: Clustering statistics (PAC and CHI) used for identifying the optimal number of clusters based on Kolomogrov-Smirnov distance and 
-  the heatmap showing the corresponding classes for each of the cell line-substrate pairs for cell (A) area, and (B) stiffness. 
-  The numeric values shown in the heatmap correspond to median values of circularity for each cell line-substrate pair. (N) refers to non-malignant (normal) cell lines. 
-  Note that in this analysis only those cell line-substrate pairs which have at least 25 data points for the physical feature of interest are considered.
+    Supplementary Figure 10: Principal component analysis (PCA) performed using the median values of cell area, aspect ratio, circularity, stiffness, and speedfrom all the cell line-substrate pairs.
+    Note that in this analysis only those cell line-substrate pairs are considered which have at least 25 data points for each of the physical feature.
+    (a) Variance explained by each of the PCs, and (b) the loadings of the physical features on the first four PCs.
+    Pairwise scatter plots for the first four PCs, with the points colored by the (c) tissue type and (d) substrate type. 
 \end{adjustwidth}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{../Figures/Supplementary_Figure11/supplementary_figure11.png}
+    \caption{Clustering statistics (PAC and CHI) used for identifying the optimal number of clusters (mechanotypes) based on Wasserstein-1 distance and the corresponding consensus matrix for optimal cluster count $k$
+    of cell (a) area, (b) stiffness, and (c) speed.}
+    \label{fig:fig11}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{../Figures/Supplementary_Figure12/supplementary_figure12.png}
+    \caption{(a) Clustering statistics (PAC and CHI) used for identifying the optimal number of clusters (mechanotypes) based on Wasserstein-1 distance and the corresponding consensus matrix for optimal cluster count $k$
+    of circularity. (b) Mechanotypes for aspect ratio, whereby the heatmap shows the phenotypic class for each cell line-substrate pair and the KDEs correspond to characteristic density function for each class. 
+    The numeric values shown in the heatmap correspond to median values of circularity for each cell line-substrate pair. (N) refers to non-malignant (normal) cell lines. 
+    Note that in this analysis only those cell line-substrate pairs are considered which have at least 25 data points $(n \geq 25)$ for the physical feature of interest.
+    See supplementary tables 1 for the exact value of $n$ for the cell lines.}
+    \label{fig:fig12}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{../Figures/Supplementary_Figure13/supplementary_figure13.png}
+    \caption{(a) Clustering statistics (PAC and CHI) used for identifying the optimal number of clusters (mechanotypes) based on Wasserstein-1 distance and the corresponding consensus matrix for optimal cluster count $k$
+    of circularity. (b) Mechanotypes for circularity, whereby the heatmap shows the phenotypic class for each cell line-substrate pair and the KDEs correspond to characteristic density function for each class. 
+    The numeric values shown in the heatmap correspond to median values of circularity for each cell line-substrate pair. (N) refers to non-malignant (normal) cell lines. 
+    Note that in this analysis only those cell line-substrate pairs  are considered which have at least 25 data points $(n \geq 25)$ for the physical feature of interest.
+    See supplementary tables 1 for the exact value of $n$ for the cell lines.}
+    \label{fig:fig13}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{../Figures/Supplementary_Figure14/supplementary_figure14.png}
+    \caption{Clustering statistics (PAC and CHI) used for identifying the optimal number of clusters based on Kolomogrov-Smirnov distance and 
+    the heatmap showing the corresponding classes for each of the cell line-substrate pairs for cell (a) area, and (b) stiffness. 
+    The numeric values shown in the heatmap correspond to median values of circularity for each cell line-substrate pair. (N) refers to non-malignant (normal) cell lines. 
+    Note that in this analysis only those cell line-substrate pairs are considered which have at least 25 data points $(n \geq 25)$ for the physical feature of interest.
+    See supplementary tables 1 and 2 for the exact value of $n$ for the cell lines.}
+    \label{fig:fig14}
+\end{figure}
+
+\begin{figure}[H]
+    \hspace*{-0.8cm}
+    \centering
+    \includegraphics{../Figures/Supplementary_Figure15/supplementary_figure15.png}
+    \caption{Comparison between tissue-specific normal and cancer cell behavior in terms of migratory persistence for (a) breast, (b) lung, (c) pancreas, and (c) prostate cell lines.
+    (N) refers to non-malignant (normal) cell lines. 
+    Decorrelation time estimated from directional autocorrelation curves (shown in Supp. Fig. 18-20) is used as a measure of migratory persistence.
+    Note that, for RWPE-1 cell line on 30 kPa Coll, hTERT-HPNE cell line on 500 Pa Coll, 500 Pa FN and HA FN, and Panc-1 cell line on 30 kPa FN,
+    the directional autocorrelation did not fall below 0.2 cutoff used to determine decorrelation time.
+    For these cases, the total trajectory time is used as a measure of migratory persistence.}
+    \label{fig:fig15}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{../Figures/Supplementary_Figure16/supplementary_figure16.png}
+    \caption{Heatmap showing the migratory persistence for each of the cell line-substrate pairs. 
+    (N) refers to non-malignant (normal) cell lines. 
+    Decorrelation time estimated from directional autocorrelation curves (shown in Supp. Fig. 17-21) is used as a measure of migratory persistence.
+    Note that (*) represents the cell line-substrate pairs for which the directional autocorrelation did not fall below 0.2 cutoff used to determine 
+    decorrelation time. For these cases, the total trajectory time is used as a measure of migratory persistence.} 
+    \label{fig:fig16}
+\end{figure}
+
+\begin{figure}[H]
+    \hspace*{-0.8cm}
+    \centering
+    \includegraphics{../Figures/Supplementary_Figures17_21/supplementary_figure17.png}
+    \caption{Directional autocorrelation comparing the persistence of cell migration for cell lines on different substrates.
+    For each cell line, only those substrates are analysed that have $n \geq 25$ measurements.
+    See supplementary tables 3 for the exact value of $n$ for the cell lines.}
+    \label{fig:fig17}
+\end{figure}
+
+\begin{figure}[H]
+    \hspace*{-0.8cm}
+    \centering
+    \includegraphics{../Figures/Supplementary_Figures17_21/supplementary_figure18.png}
+    \caption{Directional autocorrelation comparing the persistence of cell migration for cell lines on different substrates.
+    For each cell line, only those substrates are analysed that have $n \geq 25$ measurements.
+    See supplementary tables 3 for the exact value of $n$ for the cell lines.}
+    \label{fig:fig18}
+\end{figure}
+
+\begin{figure}[H]
+    \hspace*{-0.8cm}
+    \centering
+    \includegraphics{../Figures/Supplementary_Figures17_21/supplementary_figure19.png}
+    \caption{Directional autocorrelation comparing the persistence of cell migration for cell lines on different substrates.
+    For each cell line, only those substrates are analysed that have $n \geq 25$ measurements.
+    See supplementary tables 3 for the exact value of $n$ for the cell lines.}
+    \label{fig:fig19}
+\end{figure}
+
+\begin{figure}[H]
+    \hspace*{-0.8cm}
+    \centering
+    \includegraphics{../Figures/Supplementary_Figures17_21/supplementary_figure20.png}
+    \caption{Directional autocorrelation comparing the persistence of cell migration for cell lines on different substrates.
+    For each cell line, only those substrates are analysed that have $n \geq 25$ measurements.
+    See supplementary tables 3 for the exact value of $n$ for the cell lines.}
+    \label{fig:fig20}
+\end{figure}
+
+\begin{figure}[H]
+    \hspace*{-0.8cm}
+    \centering
+    \includegraphics{../Figures/Supplementary_Figures17_21/supplementary_figure21.png}
+    \caption{Directional autocorrelation comparing the persistence of cell migration for cell lines on different substrates.
+    For each cell line, only those substrates are analysed that have $n \geq 25$ measurements.
+    See supplementary tables 3 for the exact value of $n$ for the cell lines.}
+    \label{fig:fig21}
+\end{figure}
 
 \end{document}

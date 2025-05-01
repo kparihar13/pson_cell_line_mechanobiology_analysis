@@ -62,28 +62,27 @@ for (f in features){
 # is present. This is done to ensure that all the cell line-substrate pairs 
 # are present in the final dataframe even if few of the cell line-substrate pairs
 # may have been removed above due to less number of data points (<25)
-medians.merged <- expand.grid(unique(data[[1]]$cl_id), unique(data[[1]]$sub_id))
-colnames(medians.merged) <- c("cl_id", "sub_id")
+all.features <- expand.grid(unique(data[[1]]$cl_id), unique(data[[1]]$sub_id))
+colnames(all.features) <- c("cl_id", "sub_id")
 
 for (f in features) {
-  medians.merged <- medians.merged %>% 
+  all.features <- all.features %>% 
     left_join(.,medians[[f]], by = c("cl_id", "sub_id"))
 }
 
-colnames(medians.merged)[3:7] <- c("Area","Circularity","Aspect Ratio",
-                                   "Cell Stiffness","Motility")
+colnames(all.features)[3:7] <- c("Area","Circularity","Aspect Ratio",
+                                   "Cell Stiffness","Cell Speed")
 
 # correlation analysis using median values -------
-corr.spearman <- rcorr(as.matrix(medians.merged %>% 
+corr.spearman <- rcorr(as.matrix(all.features %>% 
                                  select(-all_of(c("cl_id","sub_id")))), 
                      type = "spearman")
 
 # plot the correlation matrix -------
-
 png(paste("../Figures/supplementary_figure1.png",sep=""),
     res = 300, width = 1200, height = 1200)
 
-corrplot(corr.spearman$r,
+plt = corrplot(corr.spearman$r,
   p.mat = corr.spearman$P,
   method = "color",
   type = "lower",
@@ -93,6 +92,8 @@ corrplot(corr.spearman$r,
   diag = FALSE,
   tl.col = "black",
   cl.align = "l",
+  cl.cex = 1,
+  cl.length = 5,
   col = colorRampPalette(c("blue", "white", "red"))(100)
 )
 

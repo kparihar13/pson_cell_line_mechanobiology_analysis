@@ -12,8 +12,7 @@ suppressPackageStartupMessages({
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 # global parameters ---------
-features <- c("area", "circularity", "aspect_ratio", 
-              "cell_stiffness", "motility")
+features <- c("motility")
 
 # define fold change (to, from)
 folds <- list(
@@ -34,8 +33,9 @@ folds <- list(
 # define an empty named list for storing data
 data <- setNames(vector("list", length(features)), features)
 for (f in features) {
-  data[[f]] <- read_tsv(paste("../data/", f, ".tsv", sep = ""), 
-                        show_col_types = FALSE) %>%
+  data[[f]] <- read_tsv(paste("../data/", f, ".tsv", sep = ""),
+    show_col_types = FALSE
+  ) %>%
     as_tibble()
   colnames(data[[f]]) <- c("cl_id", "sub_id", "feature_value")
 }
@@ -70,7 +70,7 @@ for (f in features) {
     col10 = double(), col11 = double(),
     stringsAsFactors = FALSE
   )
-  
+
   # iterate through cell lines
   for (i in 1:length(cell_lines)) {
     print(paste("Cell line:", cell_lines[[i]]))
@@ -81,14 +81,14 @@ for (f in features) {
     for (fc in folds) {
       print(paste("fold:", fc))
       # filter to keep only the data for feature, cell line, and substrates of interest
-      temp <- data[[f]] %>% 
+      temp <- data[[f]] %>%
         filter((cl_id == cell_lines[[i]]) & (sub_id %in% fc))
-  
+
       # calculate the median values for each of the substrates
       obs_ratio <- temp %>%
         group_by(sub_id) %>%
         summarise(median_value = median(feature_value))
-      
+
       # check if the number of observations in each group is greater than the minimum cutoff
       if ((nrow(filter(temp, sub_id == fc[1])) >= min.cutoff) &&
         (nrow(filter(temp, sub_id == fc[2])) >= min.cutoff)) {
@@ -99,7 +99,7 @@ for (f in features) {
           arrange(factor(sub_id, levels = fc)) %>%
           summarise(ratio(median_value)) %>%
           pull()
-        
+
         # Null hypothesis: same median, i.e. log2(ratio) = 0
         medianratio <- foreach(i = 1:reps, .combine = c) %dopar% {
           oneratio <- temp %>%
@@ -116,8 +116,10 @@ for (f in features) {
         # two-sided test, thats why abs() is used
         # Note: +1 in numerator and denominator to ensure finite sample type-I error control
         # +1 basically corresponds to including the observed value in the permutation distribution
-        pvalue_temp <- c(pvalue_temp, 
-                         (1 + sum(abs(medianratio) >= abs(log2(obs_ratio)))) / (1 + reps))
+        pvalue_temp <- c(
+          pvalue_temp,
+          (1 + sum(abs(medianratio) >= abs(log2(obs_ratio)))) / (1 + reps)
+        )
 
         ratio_temp <- c(ratio_temp, obs_ratio)
       } else {
@@ -134,7 +136,7 @@ for (f in features) {
   colnames(fold_value) <- names(folds)
   rownames(fold_pvalue) <- cell_lines
   colnames(fold_pvalue) <- names(folds)
-  
+
   # flatten fold_pvalue for Benjamini-Hochberg correction
   pvalue_bh_corrected <- fold_pvalue %>%
     rownames_to_column(var = "cell_line") %>%
@@ -148,17 +150,19 @@ for (f in features) {
   cell_line_fold <- rownames(pvalue_bh_corrected)
   pvalue_bh_corrected <- as.vector(pvalue_bh_corrected)
   names(pvalue_bh_corrected) <- cell_line_fold
-  
+
   # perform Benjamini-Hochberg correction
   pvalue_bh_corrected <- p.adjust(pvalue_bh_corrected, method = "BH")
-  
+
   # convert corrected values back into data frame
   pvalue_bh_corrected <- as.matrix(pvalue_bh_corrected)
   colnames(pvalue_bh_corrected) <- "pvalue"
   pvalue_bh_corrected <- as.data.frame(pvalue_bh_corrected) %>%
     rownames_to_column(var = "cell_line_fold") %>%
-    mutate(cell_line = gsub("_.*", "", cell_line_fold),
-           fold = gsub(".*_", "", cell_line_fold)) %>%
+    mutate(
+      cell_line = gsub("_.*", "", cell_line_fold),
+      fold = gsub(".*_", "", cell_line_fold)
+    ) %>%
     select(cell_line, fold, pvalue) %>%
     # convert to wide format
     spread(key = "fold", value = "pvalue") %>%
@@ -166,10 +170,10 @@ for (f in features) {
     mutate(cell_line = factor(cell_line, levels = rownames(fold_pvalue))) %>%
     arrange(cell_line) %>%
     column_to_rownames(var = "cell_line")
-  
+
   # order the columns of pvalue_bh_corrected
   pvalue_bh_corrected <- pvalue_bh_corrected[, colnames(fold_pvalue)]
-  
+
   # save the fold values and p-values
-  save(fold_value, pvalue_bh_corrected, file = paste(f,"_folds.RData", sep = ""))
+  save(fold_value, pvalue_bh_corrected, file = paste(f, "_folds.RData", sep = ""))
 }

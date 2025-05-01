@@ -29,11 +29,11 @@ cell.line.label.colors = read.csv("../Figures/cell_line_label_colors.csv",
   mutate(cl_id = factor(cl_id, levels = unique(cl_id)))
 
 # color for clusters based on the number of clusters
-cluster_colors <- list(c("#0000ff","#ff0000"), 
-                       c("#0000ff","#000000","#ff0000"), 
-                       c("#0000ff","#006400","#000000","#ff0000"),
-                       c("#0000ff","#006400","orange4","#000000","#ff0000"),
-                       c("#0000ff","magenta","#006400","orange4","#000000","#ff0000"))
+cluster_colors <- list(c("#005AB5","#DC3220"), 
+                       c("#005AB5","#000000","#DC3220"), 
+                       c("#005AB5","#009E73","#000000","#DC3220"),
+                       c("#005AB5","#009E73","#E69F00","#000000","#DC3220"),
+                       c("#005AB5","#CC79A7","#009E73","#E69F00","#000000","#DC3220"))
 
 # metric of interest
 # "wass1" (1-Wasserstein) or "kolm_smir" (Kolmogrov-Smirnov)
@@ -49,6 +49,10 @@ for (f in features){
   colnames(data[[f]]) <- c("cl_id", "sub_id", "feature_value")
   data[[f]] <- data[[f]] %>% 
     mutate_at(c('cl_id', 'sub_id'), as.factor)
+  
+  # change 500Pa and 30kPa to 500 Pa and 30 kPa
+  data[[f]]$sub_id <- gsub("500Pa", "500 Pa", data[[f]]$sub_id)
+  data[[f]]$sub_id <- gsub("30kPa", "30 kPa", data[[f]]$sub_id)
 }
 
 # remove cases with less than minimum number of data points -------
@@ -111,6 +115,10 @@ for (f in features){
   # Reorder columns: cell and subs ids first, followed by cluster label
   cluster.map[[f]] <- cluster.map[[f]][,c(2:3,1)]
   
+  # change 500Pa and 30kPa to 500 Pa and 30 kPa
+  cluster.map[[f]]$sub_id <- gsub("500Pa", "500 Pa", cluster.map[[f]]$sub_id)
+  cluster.map[[f]]$sub_id <- gsub("30kPa", "30 kPa", cluster.map[[f]]$sub_id)
+  
   # add cluster labels to the data
   data[[f]] <- data[[f]] %>% 
     inner_join(., cluster.map[[f]], by = c("cl_id", "sub_id"))
@@ -142,10 +150,14 @@ for (f in features){
   # for some reason there is an "X" before 22Rv1, remove it 
   boundary.cases[[f]]$cl_id <- gsub("X22Rv1", "22Rv1", boundary.cases[[f]]$cl_id)
   
+  # change 500Pa and 30kPa to 500 Pa and 30 kPa
+  boundary.cases[[f]]$sub_id <- gsub("500Pa", "500 Pa", boundary.cases[[f]]$sub_id)
+  boundary.cases[[f]]$sub_id <- gsub("30kPa", "30 kPa", boundary.cases[[f]]$sub_id)
+  
   boundary.cases[[f]] <- boundary.cases[[f]] %>% 
     mutate(cl_sub = paste(cl_id,"_",sub_id,sep=""))
   
-  # remove the clusterid (which was allotted to it based on heirarichical clustering 
+  # remove the clusterid (which was allotted to it based on hierarichical clustering 
   # of the consensus matrix) column, which corresponds to the highest itemConsensus value
   # for that cell-substrate pair
   # Again note that this is a boundary case with highest itemConsensus < 0.8
@@ -235,71 +247,124 @@ for (f in features){
                                                   boundary.cases[[f]][i,"sub_id"])
   }
   
-  
-  ht = Heatmap(as.matrix(cluster.map.pivot),
-               col = colors,
-               na_col = "white",
-               cluster_rows = FALSE,
-               cluster_columns = FALSE,
-               row_dend_reorder = FALSE,
-               column_dend_reorder = FALSE,
-               show_row_dend = FALSE,
-               show_column_dend = FALSE,
-               row_names_side = 'left',
-               column_names_side = 'top',
-               column_names_rot = 45,
-               row_labels = cell.line.label.colors.feature$label, 
-               column_labels = colnames(cluster.map.pivot),
-               row_names_gp = gpar(fontsize = 10, 
-                                   col = cell.line.label.colors.feature$tissue_col),
-               column_names_gp = gpar(fontsize = 10),
-               row_split = rep(1:8, c(4,5,3,3,3,4,6,2)),
-               row_title = NULL, 
-               row_gap = unit(1.2, "mm"),
-               width = unit(9, "cm"), 
-               height = unit(18, "cm"),
-               rect_gp = gpar(col = "white", lwd = 2),
-               # adapted from ComplexHeatmap documentation
-               cell_fun = function(j, i, x, y, w, h, col) { 
-                 # if (i,j) are boundary.cases then use 2 grid.rect():
-                 # 1st half of the width and color corresponding to label1
-                 # 2nd half of the width and color corresponding to label2 
-                 for (k in 1:nrow(boundary.cases[[f]])) {
-                   if (i == boundary.cases[[f]][k,"row_index"] & 
-                       j == boundary.cases[[f]][k,"col_index"]) {
-                     # Set the color of half the cell based on label1 
-                     grid.rect(x = x-w/4, y = y, width = w/2, height = h, 
-                               gp = gpar(col = "white", lwd = 2,
-                                         fill = colors[[boundary.cases[[f]][k,"label1"]]]))
-                     # Set the color of remaining half the cell based on label2 
-                     grid.rect(x = x+w/4, y = y, width = w/2, height = h, 
-                               gp = gpar(col = "white", lwd = 2,
-                                         fill = colors[[boundary.cases[[f]][k,"label2"]]]))
+  if (f != "motility") {
+    ht = Heatmap(as.matrix(cluster.map.pivot),
+                 col = colors,
+                 na_col = "white",
+                 cluster_rows = FALSE,
+                 cluster_columns = FALSE,
+                 row_dend_reorder = FALSE,
+                 column_dend_reorder = FALSE,
+                 show_row_dend = FALSE,
+                 show_column_dend = FALSE,
+                 row_names_side = 'left',
+                 column_names_side = 'top',
+                 column_names_rot = 45,
+                 row_labels = cell.line.label.colors.feature$label, 
+                 column_labels = colnames(cluster.map.pivot),
+                 row_names_gp = gpar(fontsize = 12, 
+                                     col = cell.line.label.colors.feature$tissue_col),
+                 column_names_gp = gpar(fontsize = 12),
+                 row_split = rep(1:8, c(4,5,3,3,3,4,6,2)),
+                 row_title = NULL, 
+                 row_gap = unit(1.2, "mm"),
+                 width = unit(10, "cm"), 
+                 height = unit(20, "cm"),
+                 rect_gp = gpar(col = "white", lwd = 2),
+                 # adapted from ComplexHeatmap documentation
+                 cell_fun = function(j, i, x, y, w, h, col) { 
+                   # if (i,j) are boundary.cases then use 2 grid.rect():
+                   # 1st half of the width and color corresponding to label1
+                   # 2nd half of the width and color corresponding to label2 
+                   for (k in 1:nrow(boundary.cases[[f]])) {
+                     if (i == boundary.cases[[f]][k,"row_index"] & 
+                         j == boundary.cases[[f]][k,"col_index"]) {
+                       # Set the color of half the cell based on label1 
+                       grid.rect(x = x-w/4, y = y, width = w/2, height = h, 
+                                 gp = gpar(col = "white", lwd = 2,
+                                           fill = colors[[boundary.cases[[f]][k,"label1"]]]))
+                       # Set the color of remaining half the cell based on label2 
+                       grid.rect(x = x+w/4, y = y, width = w/2, height = h, 
+                                 gp = gpar(col = "white", lwd = 2,
+                                           fill = colors[[boundary.cases[[f]][k,"label2"]]]))
+                     }
                    }
-                 }
-                 
-                 # add median values to each cell
-                 grid.text(as.matrix(medians[[f]])[i, j], x, y,
-                           gp = gpar(fontsize = 10, col = 'white')) 
-               },
-               show_heatmap_legend = FALSE)  
+                   
+                   # add median values to each cell
+                   grid.text(as.matrix(medians[[f]])[i, j], x, y,
+                             gp = gpar(fontsize = 12, col = 'white')) 
+                 },
+                 show_heatmap_legend = FALSE)  
+  } else {
+    ht = Heatmap(as.matrix(cluster.map.pivot),
+                 col = colors,
+                 na_col = "white",
+                 cluster_rows = FALSE,
+                 cluster_columns = FALSE,
+                 row_dend_reorder = FALSE,
+                 column_dend_reorder = FALSE,
+                 show_row_dend = FALSE,
+                 show_column_dend = FALSE,
+                 row_names_side = 'left',
+                 column_names_side = 'top',
+                 column_names_rot = 45,
+                 row_labels = cell.line.label.colors.feature$label, 
+                 column_labels = colnames(cluster.map.pivot),
+                 row_names_gp = gpar(fontsize = 12, 
+                                     col = cell.line.label.colors.feature$tissue_col),
+                 column_names_gp = gpar(fontsize = 12),
+                 row_split = rep(1:8, c(4,5,3,2,3,4,6,2)),
+                 row_title = NULL, 
+                 row_gap = unit(1.2, "mm"),
+                 width = unit(10, "cm"), 
+                 height = unit(20, "cm"),
+                 rect_gp = gpar(col = "white", lwd = 2),
+                 # adapted from ComplexHeatmap documentation
+                 cell_fun = function(j, i, x, y, w, h, col) { 
+                   # if (i,j) are boundary.cases then use 2 grid.rect():
+                   # 1st half of the width and color corresponding to label1
+                   # 2nd half of the width and color corresponding to label2 
+                   for (k in 1:nrow(boundary.cases[[f]])) {
+                     if (i == boundary.cases[[f]][k,"row_index"] & 
+                         j == boundary.cases[[f]][k,"col_index"]) {
+                       # Set the color of half the cell based on label1 
+                       grid.rect(x = x-w/4, y = y, width = w/2, height = h, 
+                                 gp = gpar(col = "white", lwd = 2,
+                                           fill = colors[[boundary.cases[[f]][k,"label1"]]]))
+                       # Set the color of remaining half the cell based on label2 
+                       grid.rect(x = x+w/4, y = y, width = w/2, height = h, 
+                                 gp = gpar(col = "white", lwd = 2,
+                                           fill = colors[[boundary.cases[[f]][k,"label2"]]]))
+                     }
+                   }
+                   
+                   # add median values to each cell
+                   grid.text(as.matrix(medians[[f]])[i, j], x, y,
+                             gp = gpar(fontsize = 12, col = 'white')) 
+                 },
+                 show_heatmap_legend = FALSE)
+  }
   
   # save the heatmaps
   if (metric_of_interest == "wass1") {
-    if (f != "circularity"){
+    if (f %in% c("area", "cell_stiffness", "motility")){
       png(paste0("../Figures/Figure5/", f,"_cluster_heatmap.png"), 
-          res = 300, width = 1500, height = 2500, units = "px")
-    } else {
-      png(paste0("../Figures/Supplementary_Figure8/", f,"_cluster_heatmap.png"), 
-          res = 300, width = 1500, height = 2500, units = "px")
+          res = 300, width = 1700, height = 2700, units = "px")
+    } else if (f == "aspect_ratio") {
+      png(paste0("../Figures/Supplementary_Figure12/", f,"_cluster_heatmap.png"), 
+          res = 300, width = 1700, height = 2700, units = "px")
+    }
+    else if (f == "circularity") {
+      png(paste0("../Figures/Supplementary_Figure13/", f,"_cluster_heatmap.png"), 
+          res = 300, width = 1700, height = 2700, units = "px")
     }
   } else {
     if (f %in% c("area", "cell_stiffness")){
-      png(paste0("../Figures/Supplementary_Figure9/", f,"_cluster_heatmap.png"), 
-          res = 300, width = 1500, height = 2500, units = "px")
+      png(paste0("../Figures/Supplementary_Figure14/", f,"_cluster_heatmap.png"), 
+          res = 300, width = 1700, height = 2700, units = "px")
     } else {
       png(paste0(f, "/", metric_of_interest,"_consensus_clustering/cluster_heatmap.png"), 
-          res = 300, width = 1500, height = 2500, units = "px")
+          res = 300, width = 1700, height = 2700, units = "px")
     }
   }
 
@@ -396,11 +461,14 @@ for (f in features){
   
   # save the KDEs
   if (metric_of_interest == "wass1") {
-    if (f != "circularity"){
+    if (f %in% c("area", "cell_stiffness", "motility")){
       png(paste0("../Figures/Figure5/", f,"_cluster_KDEs.png"), 
           res = 300, width = 1800, height = 1200, units = "px")
-    } else {
-      png(paste0("../Figures/Supplementary_Figure8/", f,"_cluster_KDEs.png"), 
+    } else if (f == "aspect_ratio") {
+      png(paste0("../Figures/Supplementary_Figure12/", f,"_cluster_KDEs.png"), 
+          res = 300, width = 1800, height = 1200, units = "px")
+    } else if (f == "circularity") {
+      png(paste0("../Figures/Supplementary_Figure13/", f,"_cluster_KDEs.png"), 
           res = 300, width = 1800, height = 1200, units = "px")
     }
   } else {
@@ -427,27 +495,48 @@ for (f in features){
   { KDE_labels <- KDE_labels + 
       xlim(0,4000) + 
     labs(x = expression("Area (" * mu*"m)"^2), 
-         y = 'density') }
+         y = 'Density') +
+    theme(axis.title.x = element_text(size = 12),
+          axis.title.y = element_text(size = 12),
+          axis.text.x = element_text(size = 12),
+          axis.text.y = element_text(size = 12)) }
   else if (f == "circularity") 
   {KDE_labels <- KDE_labels + 
       labs(x = "Circularity", 
-           y = 'density')} 
+           y = 'Density')+
+    theme(axis.title.x = element_text(size = 12),
+          axis.title.y = element_text(size = 12),
+          axis.text.x = element_text(size = 12),
+          axis.text.y = element_text(size = 12)) } 
   else if (f == "aspect_ratio") 
   {KDE_labels <- KDE_labels + 
       xlim(1,4) + 
     labs(x = "Aspect Ratio", 
-         y = 'density')} 
+         y = 'Density') +
+    theme(axis.title.x = element_text(size = 12),
+          axis.title.y = element_text(size = 12),
+          axis.text.x = element_text(size = 12),
+          axis.text.y = element_text(size = 12)) } 
   else if (f == "cell_stiffness") 
   {KDE_labels <- KDE_labels + 
       xlim(0,18000) + 
     labs(x = "Cell Stiffness (Pa)", 
-         y = 'density') } 
+         y = 'Density') +
+    theme(axis.title.x = element_text(size = 12),
+          axis.title.y = element_text(size = 12),
+          axis.text.x = element_text(size = 12),
+          axis.text.y = element_text(size = 12)) } 
   else if(f == "motility") 
   {KDE_labels <- KDE_labels + 
       xlim(0,120) + 
     labs(x = expression("Speed (" * mu*"m/hr)"), 
-         y = 'density')}
+         y = 'Density') +
+    theme(axis.title.x = element_text(size = 12),
+          axis.title.y = element_text(size = 12),
+          axis.text.x = element_text(size = 12),
+          axis.text.y = element_text(size = 12)) }
   
   print(KDE_labels)
   dev.off()
 }
+

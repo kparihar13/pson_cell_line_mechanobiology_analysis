@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.25)  1 MAY 2025 13:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.25)  2 MAY 2025 01:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -962,15 +962,15 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 333.
  ) 
 Here is how much of TeX's memory you used:
- 10800 strings out of 481239
- 173542 string characters out of 5920377
- 511364 words of memory out of 5000000
+ 10802 strings out of 481239
+ 173564 string characters out of 5920377
+ 511351 words of memory out of 5000000
  25674 multiletter control sequences out of 15000+600000
- 576534 words of font info for 103 fonts, out of 8000000 for 9000
+ 576617 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,11n,45p,1063b,398s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb>
-Output written on SI.pdf (25 pages, 12821805 bytes).
+Output written on SI.pdf (25 pages, 12821816 bytes).
 PDF statistics:
  205 PDF objects out of 1000 (max. 8388607)
  148 compressed objects within 2 object streams

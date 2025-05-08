@@ -21,6 +21,13 @@ cell.line.names <- read.csv("../Figures/cell_line_label_colors.csv",
 ) %>%
   select(cl_id, label)
 
+subs <- c(
+  "500Pa Coll", "500Pa FN",
+  "30kPa Coll", "30kPa FN",
+  "HA Coll", "HA FN",
+  "Glass"
+)
+
 # load the data --------
 # define an empty named list for storing data
 data <- setNames(vector("list", length(features)), features)
@@ -75,7 +82,19 @@ for (f in c("area", "cell_stiffness", "motility")) {
 
   # change NA to 0
   counts[[f]][is.na(counts[[f]])] <- 0
-  
+
+  # order the columns
+  counts[[f]] <- counts[[f]][, c(
+    "500Pa Coll", "500Pa FN",
+    "30kPa Coll", "30kPa FN",
+    "HA Coll", "HA FN",
+    "Glass"
+  )]
+
+  # Change 500Pa and 30kPa to 500 Pa and 30 kPa
+  colnames(counts[[f]]) <- gsub("500Pa", "500 Pa", colnames(counts[[f]]))
+  colnames(counts[[f]]) <- gsub("30kPa", "30 kPa", colnames(counts[[f]]))
+
   counts[[f]] |>
     kable(
       format = "latex",

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.25)  2 MAY 2025 01:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.25)  8 MAY 2025 14:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -693,41 +693,41 @@ LaTeX Info: Redefining \nameref on input line 90.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 95.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 96.
  (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 95.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 96.
  (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 95.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 96.
  (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 95.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 96.
  (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 95.
+(Font)              <12> on input line 96.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 95.
+(Font)              <8> on input line 96.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 95.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 95.
+(Font)              <6> on input line 96.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 96.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 95.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 96.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-Overfull \hbox (29.50024pt too wide) in paragraph at lines 95--95
+Overfull \hbox (29.50024pt too wide) in paragraph at lines 96--96
  [][] 
  []
 
@@ -735,7 +735,7 @@ Overfull \hbox (29.50024pt too wide) in paragraph at lines 95--95
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 5.
 
-Overfull \hbox (16.23112pt too wide) in paragraph at lines 5--41
+Overfull \hbox (30.8311pt too wide) in paragraph at lines 5--41
  [][] 
  []
 
@@ -743,7 +743,7 @@ Overfull \hbox (16.23112pt too wide) in paragraph at lines 5--41
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 ) (./supplementary_table_cell_stiffness.tex
-Overfull \hbox (16.23112pt too wide) in paragraph at lines 5--41
+Overfull \hbox (30.8311pt too wide) in paragraph at lines 5--41
  [][] 
  []
 
@@ -751,7 +751,7 @@ Overfull \hbox (16.23112pt too wide) in paragraph at lines 5--41
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 ) (./supplementary_table_motility.tex
-Overfull \hbox (16.23112pt too wide) in paragraph at lines 5--40
+Overfull \hbox (30.8311pt too wide) in paragraph at lines 5--40
  [][] 
  []
 
@@ -764,12 +764,12 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <../Figures/supplementary_figure1.png, id=29, 289.08pt x 289.08pt>
 File: ../Figures/supplementary_figure1.png Graphic file (type png)
 <use ../Figures/supplementary_figure1.png>
-Package pdftex.def Info: ../Figures/supplementary_figure1.png  used on input line 105.
+Package pdftex.def Info: ../Figures/supplementary_figure1.png  used on input line 106.
 (pdftex.def)             Requested size: 231.2643pt x 231.2643pt.
 <../Figures/Supplementary_Figure2/supplementary_figure2.png, id=30, 426.8748pt x 586.8324pt>
 File: ../Figures/Supplementary_Figure2/supplementary_figure2.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure2/supplementary_figure2.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure2/supplementary_figure2.png  used on input line 114.
+Package pdftex.def Info: ../Figures/Supplementary_Figure2/supplementary_figure2.png  used on input line 115.
 (pdftex.def)             Requested size: 426.87375pt x 586.83096pt.
  [5
 
@@ -780,12 +780,12 @@ Overfull \vbox (50.30688pt too high) has occurred while \output is active []
 <../Figures/Supplementary_Figure3/supplementary_figure3.png, id=44, 441.0879pt x 300.4023pt>
 File: ../Figures/Supplementary_Figure3/supplementary_figure3.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure3/supplementary_figure3.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure3/supplementary_figure3.png  used on input line 126.
+Package pdftex.def Info: ../Figures/Supplementary_Figure3/supplementary_figure3.png  used on input line 127.
 (pdftex.def)             Requested size: 441.08682pt x 300.40155pt.
 <../Figures/Supplementary_Figure4/supplementary_figure4.png, id=45, 364.2408pt x 561.297pt>
 File: ../Figures/Supplementary_Figure4/supplementary_figure4.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure4/supplementary_figure4.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure4/supplementary_figure4.png  used on input line 139.
+Package pdftex.def Info: ../Figures/Supplementary_Figure4/supplementary_figure4.png  used on input line 140.
 (pdftex.def)             Requested size: 364.23991pt x 561.29562pt.
  [7 <../Figures/Supplementary_Figure3/supplementary_figure3.png>]
 Overfull \vbox (24.77155pt too high) has occurred while \output is active []
@@ -794,7 +794,7 @@ Overfull \vbox (24.77155pt too high) has occurred while \output is active []
 <../Figures/Supplementary_Figure5/supplementary_figure5.png, id=57, 364.2408pt x 561.297pt>
 File: ../Figures/Supplementary_Figure5/supplementary_figure5.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure5/supplementary_figure5.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure5/supplementary_figure5.png  used on input line 152.
+Package pdftex.def Info: ../Figures/Supplementary_Figure5/supplementary_figure5.png  used on input line 153.
 (pdftex.def)             Requested size: 364.23991pt x 561.29562pt.
 
 Overfull \vbox (24.77155pt too high) has occurred while \output is active []
@@ -803,15 +803,15 @@ Overfull \vbox (24.77155pt too high) has occurred while \output is active []
 <../Figures/Supplementary_Figure6/supplementary_figure6.png, id=63, 455.301pt x 369.2997pt>
 File: ../Figures/Supplementary_Figure6/supplementary_figure6.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure6/supplementary_figure6.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure6/supplementary_figure6.png  used on input line 164.
+Package pdftex.def Info: ../Figures/Supplementary_Figure6/supplementary_figure6.png  used on input line 165.
 (pdftex.def)             Requested size: 455.29988pt x 369.29878pt.
 <../Figures/Supplementary_Figure7/supplementary_figure7.png, id=64, 510.708pt x 364.2408pt>
 File: ../Figures/Supplementary_Figure7/supplementary_figure7.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure7/supplementary_figure7.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure7/supplementary_figure7.png  used on input line 173.
+Package pdftex.def Info: ../Figures/Supplementary_Figure7/supplementary_figure7.png  used on input line 174.
 (pdftex.def)             Requested size: 510.70674pt x 364.23991pt.
 
-Overfull \hbox (20.62277pt too wide) in paragraph at lines 171--175
+Overfull \hbox (20.62277pt too wide) in paragraph at lines 172--176
  []|  [] 
  []
 
@@ -819,10 +819,10 @@ Overfull \hbox (20.62277pt too wide) in paragraph at lines 171--175
 <../Figures/Supplementary_Figure8/supplementary_figure8.png, id=70, 509.7444pt x 262.581pt>
 File: ../Figures/Supplementary_Figure8/supplementary_figure8.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure8/supplementary_figure8.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure8/supplementary_figure8.png  used on input line 182.
+Package pdftex.def Info: ../Figures/Supplementary_Figure8/supplementary_figure8.png  used on input line 183.
 (pdftex.def)             Requested size: 509.74315pt x 262.58034pt.
 
-Overfull \hbox (19.65918pt too wide) in paragraph at lines 180--187
+Overfull \hbox (19.65918pt too wide) in paragraph at lines 181--188
  []|  [] 
  []
 
@@ -830,10 +830,10 @@ Overfull \hbox (19.65918pt too wide) in paragraph at lines 180--187
 <../Figures/Supplementary_Figure9/supplementary_figure9.png, id=76, 509.7444pt x 398.6895pt>
 File: ../Figures/Supplementary_Figure9/supplementary_figure9.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure9/supplementary_figure9.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure9/supplementary_figure9.png  used on input line 194.
+Package pdftex.def Info: ../Figures/Supplementary_Figure9/supplementary_figure9.png  used on input line 195.
 (pdftex.def)             Requested size: 509.74315pt x 398.68852pt.
 
-Overfull \hbox (19.65918pt too wide) in paragraph at lines 192--199
+Overfull \hbox (19.65918pt too wide) in paragraph at lines 193--200
  []|  [] 
  []
 
@@ -841,10 +841,10 @@ Overfull \hbox (19.65918pt too wide) in paragraph at lines 192--199
 <../Figures/Supplementary_Figure10/supplementary_figure10.png, id=82, 510.708pt x 693.5511pt>
 File: ../Figures/Supplementary_Figure10/supplementary_figure10.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure10/supplementary_figure10.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure10/supplementary_figure10.png  used on input line 207.
+Package pdftex.def Info: ../Figures/Supplementary_Figure10/supplementary_figure10.png  used on input line 208.
 (pdftex.def)             Requested size: 510.70674pt x 693.5494pt.
 
-Overfull \hbox (20.62277pt too wide) in paragraph at lines 204--208
+Overfull \hbox (20.62277pt too wide) in paragraph at lines 205--209
  []|  [] 
  []
 
@@ -855,33 +855,33 @@ Overfull \vbox (123.62488pt too high) has occurred while \output is active []
 <../Figures/Supplementary_Figure11/supplementary_figure11.png, id=94, 297.7524pt x 341.8371pt>
 File: ../Figures/Supplementary_Figure11/supplementary_figure11.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure11/supplementary_figure11.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure11/supplementary_figure11.png  used on input line 220.
+Package pdftex.def Info: ../Figures/Supplementary_Figure11/supplementary_figure11.png  used on input line 221.
 (pdftex.def)             Requested size: 297.75166pt x 341.83624pt.
 <../Figures/Supplementary_Figure12/supplementary_figure12.png, id=95, 332.2011pt x 375.804pt>
 File: ../Figures/Supplementary_Figure12/supplementary_figure12.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure12/supplementary_figure12.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure12/supplementary_figure12.png  used on input line 228.
+Package pdftex.def Info: ../Figures/Supplementary_Figure12/supplementary_figure12.png  used on input line 229.
 (pdftex.def)             Requested size: 332.20027pt x 375.80309pt.
  [15 <../Figures/Supplementary_Figure11/supplementary_figure11.png>]
 <../Figures/Supplementary_Figure13/supplementary_figure13.png, id=101, 332.2011pt x 375.804pt>
 File: ../Figures/Supplementary_Figure13/supplementary_figure13.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure13/supplementary_figure13.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure13/supplementary_figure13.png  used on input line 239.
+Package pdftex.def Info: ../Figures/Supplementary_Figure13/supplementary_figure13.png  used on input line 240.
 (pdftex.def)             Requested size: 332.20027pt x 375.80309pt.
  [16 <../Figures/Supplementary_Figure12/supplementary_figure12.png>]
 <../Figures/Supplementary_Figure14/supplementary_figure14.png, id=107, 291.2481pt x 514.5624pt>
 File: ../Figures/Supplementary_Figure14/supplementary_figure14.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure14/supplementary_figure14.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure14/supplementary_figure14.png  used on input line 250.
+Package pdftex.def Info: ../Figures/Supplementary_Figure14/supplementary_figure14.png  used on input line 251.
 (pdftex.def)             Requested size: 291.24738pt x 514.56114pt.
  [17 <../Figures/Supplementary_Figure13/supplementary_figure13.png>]
 <../Figures/Supplementary_Figure15/supplementary_figure15.png, id=113, 509.7444pt x 263.5446pt>
 File: ../Figures/Supplementary_Figure15/supplementary_figure15.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure15/supplementary_figure15.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure15/supplementary_figure15.png  used on input line 262.
+Package pdftex.def Info: ../Figures/Supplementary_Figure15/supplementary_figure15.png  used on input line 263.
 (pdftex.def)             Requested size: 509.74315pt x 263.54395pt.
 
-Overfull \hbox (19.65918pt too wide) in paragraph at lines 260--268
+Overfull \hbox (19.65918pt too wide) in paragraph at lines 261--269
  []|  [] 
  []
 
@@ -889,16 +889,16 @@ Overfull \hbox (19.65918pt too wide) in paragraph at lines 260--268
 <../Figures/Supplementary_Figure16/supplementary_figure16.png, id=119, 269.5671pt x 322.3242pt>
 File: ../Figures/Supplementary_Figure16/supplementary_figure16.png Graphic file (type png)
 <use ../Figures/Supplementary_Figure16/supplementary_figure16.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figure16/supplementary_figure16.png  used on input line 274.
+Package pdftex.def Info: ../Figures/Supplementary_Figure16/supplementary_figure16.png  used on input line 275.
 (pdftex.def)             Requested size: 269.56644pt x 322.32341pt.
  [19 <../Figures/Supplementary_Figure15/supplementary_figure15.png>]
 <../Figures/Supplementary_Figures17_21/supplementary_figure17.png, id=126, 504.9264pt x 515.0442pt>
 File: ../Figures/Supplementary_Figures17_21/supplementary_figure17.png Graphic file (type png)
 <use ../Figures/Supplementary_Figures17_21/supplementary_figure17.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figures17_21/supplementary_figure17.png  used on input line 286.
+Package pdftex.def Info: ../Figures/Supplementary_Figures17_21/supplementary_figure17.png  used on input line 287.
 (pdftex.def)             Requested size: 504.92517pt x 515.04295pt.
 
-Overfull \hbox (14.8412pt too wide) in paragraph at lines 284--289
+Overfull \hbox (14.8412pt too wide) in paragraph at lines 285--290
  []|  [] 
  []
 
@@ -906,10 +906,10 @@ Overfull \hbox (14.8412pt too wide) in paragraph at lines 284--289
 <../Figures/Supplementary_Figures17_21/supplementary_figure18.png, id=132, 514.5624pt x 522.0303pt>
 File: ../Figures/Supplementary_Figures17_21/supplementary_figure18.png Graphic file (type png)
 <use ../Figures/Supplementary_Figures17_21/supplementary_figure18.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figures17_21/supplementary_figure18.png  used on input line 296.
+Package pdftex.def Info: ../Figures/Supplementary_Figures17_21/supplementary_figure18.png  used on input line 297.
 (pdftex.def)             Requested size: 514.56114pt x 522.02902pt.
 
-Overfull \hbox (24.47717pt too wide) in paragraph at lines 294--299
+Overfull \hbox (24.47717pt too wide) in paragraph at lines 295--300
  []|  [] 
  []
 
@@ -917,10 +917,10 @@ Overfull \hbox (24.47717pt too wide) in paragraph at lines 294--299
 <../Figures/Supplementary_Figures17_21/supplementary_figure19.png, id=138, 504.9264pt x 513.117pt>
 File: ../Figures/Supplementary_Figures17_21/supplementary_figure19.png Graphic file (type png)
 <use ../Figures/Supplementary_Figures17_21/supplementary_figure19.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figures17_21/supplementary_figure19.png  used on input line 306.
+Package pdftex.def Info: ../Figures/Supplementary_Figures17_21/supplementary_figure19.png  used on input line 307.
 (pdftex.def)             Requested size: 504.92517pt x 513.11575pt.
 
-Overfull \hbox (14.8412pt too wide) in paragraph at lines 304--309
+Overfull \hbox (14.8412pt too wide) in paragraph at lines 305--310
  []|  [] 
  []
 
@@ -928,10 +928,10 @@ Overfull \hbox (14.8412pt too wide) in paragraph at lines 304--309
 <../Figures/Supplementary_Figures17_21/supplementary_figure20.png, id=144, 504.9264pt x 513.3579pt>
 File: ../Figures/Supplementary_Figures17_21/supplementary_figure20.png Graphic file (type png)
 <use ../Figures/Supplementary_Figures17_21/supplementary_figure20.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figures17_21/supplementary_figure20.png  used on input line 316.
+Package pdftex.def Info: ../Figures/Supplementary_Figures17_21/supplementary_figure20.png  used on input line 317.
 (pdftex.def)             Requested size: 504.92517pt x 513.35664pt.
 
-Overfull \hbox (14.8412pt too wide) in paragraph at lines 314--319
+Overfull \hbox (14.8412pt too wide) in paragraph at lines 315--320
  []|  [] 
  []
 
@@ -939,38 +939,34 @@ Overfull \hbox (14.8412pt too wide) in paragraph at lines 314--319
 <../Figures/Supplementary_Figures17_21/supplementary_figure21.png, id=150, 504.9264pt x 510.4671pt>
 File: ../Figures/Supplementary_Figures17_21/supplementary_figure21.png Graphic file (type png)
 <use ../Figures/Supplementary_Figures17_21/supplementary_figure21.png>
-Package pdftex.def Info: ../Figures/Supplementary_Figures17_21/supplementary_figure21.png  used on input line 326.
+Package pdftex.def Info: ../Figures/Supplementary_Figures17_21/supplementary_figure21.png  used on input line 327.
 (pdftex.def)             Requested size: 504.92517pt x 510.46585pt.
 
-Overfull \hbox (14.8412pt too wide) in paragraph at lines 324--329
+Overfull \hbox (14.8412pt too wide) in paragraph at lines 325--330
  []|  [] 
  []
 
 [24 <../Figures/Supplementary_Figures17_21/supplementary_figure20.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 333.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 334.
  [25 <../Figures/Supplementary_Figures17_21/supplementary_figure21.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 333.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 334.
  (./SI.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 333.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 333.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 334.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 334.
 Package rerunfilecheck Info: File `SI.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 333.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 334.
  ) 
 Here is how much of TeX's memory you used:
  10802 strings out of 481239
  173564 string characters out of 5920377
- 511351 words of memory out of 5000000
+ 511359 words of memory out of 5000000
  25674 multiletter control sequences out of 15000+600000
  576617 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,11n,45p,1063b,398s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb>
-Output written on SI.pdf (25 pages, 12821816 bytes).
+Output written on SI.pdf (25 pages, 12821922 bytes).
 PDF statistics:
  205 PDF objects out of 1000 (max. 8388607)
  148 compressed objects within 2 object streams

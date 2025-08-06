@@ -1,6 +1,6 @@
 Pan-cancer mechanobiology analysis (30 cell lines spanning 8 tissue types on 7 different substrates):
 
-**Paper reference to be added**
+**Parihar, K., Nukpezah, J., Iwamoto, D.V. et al. Tissue-dependent mechanosensing by cells derived from human tumors. npj Biol. Phys. Mech. 2, 19 (2025). https://doi.org/10.1038/s44341-025-00023-5**
 
 - data: contains the physical feature data used in the study
 - Figures:
